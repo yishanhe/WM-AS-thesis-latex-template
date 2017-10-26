@@ -86,12 +86,14 @@
 \newcommand{\thesisVita}[1]{\gdef\thesis@vita{#1}}
 \newcommand{\thesisBib}[1]{\gdef\thesis@bib{#1}}
 \newcommand{\thesisAdvisor}[1]{\gdef\ThesisAdvisor{#1}}
-%Location and Degrees added -- Ruth
-\newcommand{\thesisLocation}[1]{\gdef\ThesisLocation{#1}}
+
+%%--Location and Degrees added -- Ruth
+% @deprecated, using ThesisHometown to avoid ambiguity
+\newcommand{\thesisLocation}[1]{\gdef\ThesisLocation{#1}}  
 \newcommand{\thesisDegreeOne}[1]{\gdef\ThesisDegreeOne{#1}}
 \newcommand{\thesisDegreeTwo}[1]{\gdef\ThesisDegreeTwo{#1}}
 \newcommand{\thesisDegreeThree}[1]{\gdef\ThesisDegreeThree{#1}}
-%ThesisType -- Shanhe
+%%--Hometown, Deparment added -- Shanhe
 \newcommand{\thesisHometown}[1]{\gdef\ThesisHometown{#1}}
 \newcommand{\thesisType}[1]{\gdef\ThesisType{#1}}
 \newcommand{\thesisDepartment}[1]{\gdef\ThesisDepartment{#1}}
@@ -233,6 +235,7 @@
     \ifdefined\ThesisDegreeOne \ThesisDegreeOne \\ \fi 
     \ifdefined\ThesisDegreeTwo \ThesisDegreeTwo \\ \fi
     \ifdefined\ThesisDegreeThree \ThesisDegreeThree \\ \fi
+    % Support at most 3 previous degrees if there are more degrees, you have to manually add them. -- Shanhe
         \hspace{.1in}  \\
         \hspace{.1in}  \\
         \hspace{.1in}  \\
@@ -247,7 +250,7 @@
         \hspace{.1in}  \\
         \hspace{.1in}  \\
         \hspace{.1in}  \\ % 7 lines between purpose statement and department -- Ruth
-    {Department of Computer Science}
+    {\ifdefined\ThesisDepartment \ThesisDepartment \else Department of Computer Science \fi}
         \hspace{.1in}  \\
         \hspace{.1in}  \\
         \hspace{.1in}  \\
