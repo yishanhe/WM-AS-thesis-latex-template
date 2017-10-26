@@ -1,0 +1,20 @@
+%  to meet the specification of the margin above a
+%  chapter heading of 2 inches specified in the
+%  W&M Thesis & Dissertation Guide, it is necessary
+%  to redefine the vspace value in the following
+%  macro used by the report class in LaTeX 2e
+%     Bill Bynum, December 1998
+%
+\def\@makechapterhead#1{%
+  \vspace*{0.5in}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \huge\bfseries \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+    \fi
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    \vskip 40\p@
+  }}
+

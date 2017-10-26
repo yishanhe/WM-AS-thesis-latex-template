@@ -1,0 +1,235 @@
+% Top-level PhD Dissertation file
+
+% Generously contributed by Rance Necaise
+%                    PhD, August 1998
+%                    Topic:  IMPROVEMENTS TO THE COLOR QUANTIZATION PROCESS
+% Published and maintained by Professor William L. Bynum
+%                             http://www.cs.wm.edu/~bynum/
+% Additional changes by Bob Matthews == rem
+%                        PhD
+% to conform to Graduate Arts and Sciences Thesis guide of Nov. 2003.
+% 
+
+% Further changes done by Ruth Lambrecht
+%                    PhD, May 2013
+%                    Topic:  Translating Spatial Problems into Lumpable Markov Chains
+% with help from Andrew Pyles
+%                    PhD, May 2013
+%                    Topic:  Network Traffic Aware Smartphone Energy Savings
+% to conform to the standards set on 10/08/12.
+% 
+
+
+% Modifications to comply with Physical Standards set on 08/13/2015 done by David T. Nguyen
+%            PhD, February 2016 
+%            Topic: Enhancing Mobile Device System Using Information from Users and Upper Layers
+% Compiling in Ubuntu: use Kile as an editor, and use XeLaTeX button to compile
+% Need to instal MS fonts first as follows
+%               sudo apt-get install ttf-mscorefonts-installer
+%               sudo fc-cache
+% After that, check with 
+%               fc-match Arial
+% Use PDF figures!!! (for some reason EPS figures are not displayed correctly, 
+% you can use 'epspdf myfigure.eps' to convert)
+%
+
+% Modifications made by Ed Novak
+%            PhD, June 2016 
+%            Topic: Security And Privacy For Ubiquitous Mobile Devices
+% in April 2016 to make the template compile on department machines, via command 
+% line (xelatex) and to be easier to use / understand.
+%
+
+% At the time, please refer 
+% http://www.wm.edu/as/graduate/studentresources/thesis-dissertations/physicalstandards/index.php
+% for the latest standard.
+
+% Font and Type Size. 
+% The font for all required pages should either be Arial or Computer Modern. 
+% The required font size is indicated in the templates for the required pages. 
+% The body of the text body must be typeset in a font size of at least 10pt but no more than 12pt.
+
+
+\documentclass[11pt]{wmthesis}
+
+% *** PACKAGES YOU WANT TO INCLUDE ***
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+% \usepackage{graphicx}
+% \usepackage{color}
+% \usepackage{url}
+% %\usepackage{amsmath}
+% \usepackage{pstricks}
+% \usepackage{epsfig}
+% \usepackage{epstopdf}
+% \usepackage{verbatim}
+% %\usepackage[subfigure]{tocloft}
+% %\usepackage{amsfonts}
+% %\usepackage{amssymb}
+% \usepackage{latexsym}
+% \usepackage{multirow}
+% \usepackage[numbers]{natbib}
+% \usepackage{mdwlist}
+% %\usepackage[algochapter]{algorithm2e}
+% \usepackage{algorithm}
+% \usepackage{subfigure}
+% %\usepackage{algorithmic}
+% %\usepackage{algorithm}
+% %\usepackage{algpseudocode}
+% %\usepackage{pseudocode}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{listings}
+% \usepackage{titletoc}
+
+% ************************************
+
+
+
+
+
+
+% *** FONT ARIAL for thesis  ***
+% might not be required for proposal.
+%% see https://tex.stackexchange.com/questions/23957/how-to-set-font-to-arial-throughout-the-entire-document
+%% and http://www.tug.org/fonts/getnonfreefonts/
+
+%%-- This is how to set Arial font using XeLaTeX or LuaLaTeX. -- Shanhe
+%% See David's note at the beginning of this file how to install Arial font on department machine.
+\usepackage{fontspec} % only use it with XeLaTeX or LuaLaTeX
+\setmainfont{Arial}
+
+
+
+
+
+
+%%-- This is how to set Arial font using LaTeX -- Shanhe
+%% How to install uarial package in Mac OS (required MacTeX, /Library/TeX/texbin in your path). *nix with TexLive should be similar. - Shanhe
+%%   1. curl --remote-name https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+%%   2. sudo texlua install-getnonfreefonts
+%%   3. sudo getnonfreefonts --sys -a
+% \usepackage{uarial}
+% \renewcommand{\familydefault}{\sfdefault}
+% % load a Helvetica clone in case 
+% \renewcommand{\rmdefault}{phv} % Arial
+% \renewcommand{\sfdefault}{phv} % Arial
+% \usepackage[T1]{fontenc}
+
+
+%%-- remove bold for table of contents (TOC) as per physical standards
+%\renewcommand{\cftchapfont}{\rm } %no bold in toc
+%\renewcommand{\cftchappagefont}{\rm } %no bold in toc
+
+
+% The wmthesis class is based on the latex report class which
+% only indents paragraphs if they immediately follow other paragraphs.  The
+% dissertation lady says this is wrong.  I tend to give more credence
+% to Dr. Knuth (author of TeX) on this issue, since the other way looks really
+% crappy.  If you want the first line of every paragraph indented,
+% uncomment the next line to include the indentfirst package. -- rem
+% \usepackage{indentfirst}
+% Not sure if this is still an option -- Ruth
+
+
+%%-- set penalties 
+%% Penalties are the main value that TeX tries to minimise when line or page breaking, They may be inserted explicitly (\penalty125 means that the penalty for breaking at that point is 125). Some penalties are built in to the TeX system and inserted automatically.  Here we custom define a few.
+\def\defaultpenalty{1000} \clubpenalty=\defaultpenalty
+\widowpenalty=\defaultpenalty
+
+
+%%----------------------------------------------------------------
+% Set the title that will be printed on the Contents page -- Ruth
+%%----------------------------------------------------------------
+% The negative vspace is used to make sure that only one line is
+% between the title and the first line for each of these pages.
+\renewcommand{\contentsname}{\begin{center}\Large\normalfont TABLE OF CONTENTS\vspace{-.75in}\end{center}}
+\renewcommand\listfigurename{\begin{center}\Large\normalfont LIST OF FIGURES\vspace{-.6in}\end{center}}
+\renewcommand\listtablename{\begin{center}\Large\normalfont LIST OF TABLES\vspace{-.6in}\end{center}}
+
+%%----------------------------------------------------------------
+% Set thesis type
+%%----------------------------------------------------------------
+
+
+%%----------------------------------------------------------------
+%%----------------------------------------------------------------
+
+\begin{document}
+\doublespacing
+
+%%--Set thesis metadata
+%%--*IMPORTANT* Title cannot be in ALL CAPS -- Ruth
+\thesisTitle{Dissertation Title}
+\thesisAuthor[Student Name]{Student Name}
+\thesisMonth{June}
+\thesisYear{2016}
+\thesisAdvisor{Advisor Name}
+
+
+%%-- Degrees earned previous to Ph.D.
+%% note that the degree should be spelled out, not abbreviated
+
+% @deprecated  this location should be hometown, using thesisHometown{} instead
+% "Provide your hometown and state in the following format [e.g. St. Louis, Missouri]. 
+% International students should enter their hometown, state/province, and country [e.g. Montreal, Quebec, Canada]"
+% \thesisLocation{Xiangyang, Hubei, China}
+\thesisHometown{Xiangyang, Hubei, China}
+
+\thesisDegreeOne{Bachelor of Engineer, Huazhong University of Science and Technology, Wuhan China, 2010}
+\thesisDegreeTwo{Master of Science, Huazhong University of Science and Technology, Wuhan China, 2010}
+% \thesisDegreeThree{Master of Science, Huazhong University of Science and Technology, Wuhan China, 2010}
+
+
+%%-- Committee members
+\thesisCommittee[Computer Science]{\ThesisAdvisor}
+\thesisCommittee[Computer Science]{Professor Weizhen Mao}
+\thesisCommittee[Computer Science]{Associate Professor Denys Poshyvanyk}
+\thesisCommittee[Electrical and Computer Engineering]{Professor Haining Wang}
+\thesisCommittee[Applied Science]{Outside Committee Member}
+
+
+%%-- Insert contents of abstract.tex, acknowledge.tex and the dedication.  Don't
+%%forget to check these files for formatting hints.
+%% Also, the order they are given right here does not matter
+\thesisAbstract{abstract.tex}
+% In the actual finished pdf document the TOC comes next
+\thesisAcknowledge{acknowledge.tex}
+\thesisDedication{I would like to dedicate this dissertation to my parents, Jane and John Doe who provided endless support and love throughout my time at William and Mary.}
+
+%%-- Who know what these are for?
+%\newtheorem{lem}{Lemma}
+%\newtheorem{corollary}{Corollary}
+
+
+%%--Create the thesis Prolog
+\makeThesisProlog
+
+
+%%-- contents of the actual thesis feel free to \input as many files as you want
+\input{body.tex}
+
+
+%%-- If you want to add some appendices uncomment \appendix below
+%% All this actually does is start calling the "chapters" "appendices"
+%\appendix
+%\input{appendixA}
+%\input{appendixB} ...
+
+
+%%-- List of references not actually cited in the document (\nocite's)
+%% \nocite{NDSS04DTLS}
+
+
+%%--Include the bibliography
+\makeThesisBib{bib_dissertation}
+
+
+%% Vita is optional
+%\makeThesisVita{vita}
+
+
+%%\makeUMIAbstract{abstract}
+\end{document}
