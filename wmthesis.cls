@@ -7,10 +7,51 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{wmthesis}
 
+% Helper
+% ------
+
+% boolean
+\def \@true {TT}
+\def \@false {FL}
+\def \@setflag #1=#2{\edef #1{#2}}%              \flag = boolean
+
+\def \@unsupportedoption #1{%
+\ClassError{proc}{The standard '#1' option is not supported.}}
+
+
 %%---------------------------------------------------
 %%-- Load the base class and modify current macros.
 %%---------------------------------------------------
 
+%-- Adding options to fully customize the template -- Shanhe
+
+% Options
+% -------
+% default high level options
+\@setflag \@proposal = \@false
+\@setflag \@dissertation = \@true
+% default low level options
+\@setflag \@tablelist = \@true
+\@setflag \@figurelist = \@true
+\@setflag \@abstract = \@true
+\@setflag \@acknowledgement= \@true
+
+% high level options
+\DeclareOption{proposal}{%
+  \@setflag \@proposal = \@true
+  \@setflag \@dissertation = \@false
+  \@setflag \@tablelist = \@false
+  \@setflag \@figurelist = \@false
+  }
+
+\DeclareOption{dissertation}{%
+  \@setflag \@proposal = \@false
+  \@setflag \@dissertation = \@true
+  }
+
+% low level options
+\DeclareOption{notablelist}{\@setflag \@tablelist = \@false}
+\DeclareOption{nofigurelist}{\@setflag \@figurelist = \@false}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
 \LoadClass{report}
@@ -66,11 +107,7 @@
 
 %%---------------------------------------------------
 %%--Parameters that can be set by the user.
-\def\thesis@listtables{y}
-\def\thesis@listfigures{y}
 
-\newcommand{\notablelist}{\gdef\thesis@listtables{n}}
-\newcommand{\nofigurelist}{\gdef\thesis@listfigures{n}}
 
 %%--------------------------------------------
 %%-- Prolog pages construction.
@@ -85,10 +122,11 @@
 \newcommand{\thesisDedication}[1]{\gdef\thesis@Dedication{#1}}
 \newcommand{\thesisVita}[1]{\gdef\thesis@vita{#1}}
 \newcommand{\thesisBib}[1]{\gdef\thesis@bib{#1}}
-\newcommand{\thesisAdvisor}[1]{\gdef\ThesisAdvisor{#1}}
+\newcommand{\thesisAdvisor}[1]{\gdef\thesis@advisor{#1}}
 
 %%--Location and Degrees added -- Ruth
 % @deprecated, using ThesisHometown to avoid ambiguity
+% NOTE: do we need gdef here?
 \newcommand{\thesisLocation}[1]{\gdef\ThesisLocation{#1}}  
 \newcommand{\thesisDegreeOne}[1]{\gdef\ThesisDegreeOne{#1}}
 \newcommand{\thesisDegreeTwo}[1]{\gdef\ThesisDegreeTwo{#1}}
@@ -98,6 +136,7 @@
 \newcommand{\thesisType}[1]{\gdef\ThesisType{#1}}
 \newcommand{\thesisDepartment}[1]{\gdef\ThesisDepartment{#1}}
 
+% TODO: unify naming conventions.
 
 %  \thesisAuthor macro
 %     defines two TeX variables (only usable in this file)
@@ -127,31 +166,15 @@
 \newcounter{thesis@members}
 \setcounter{thesis@members}{1}
 
-\newcommand{\thesisCommittee}[2][\mbox{\hspace*{1ex}}]{
+\newcommand{\thesisCommittee}[3][\mbox{\hspace*{1ex}}]{
    \edef\thesis@ctr{\romannumeral\value{thesis@members}}
+   \expandafter\def\csname thesis@org\thesis@ctr\endcsname{#3}
    \expandafter\def\csname thesis@member\thesis@ctr\endcsname{#2}
-   \expandafter\def\csname thesis@position\thesis@ctr\endcsname{#1}
+   \expandafter\def\csname thesis@dept\thesis@ctr\endcsname{#1}
    \addtocounter{thesis@members}{1}}
 
-%%--The prolog pages for proposal
-\newcommand{\makeProposalProlog}{
-    \bigskip
-    \setcounter{page}{1}
-    \renewcommand{\thepage}{\roman{page}}
-    \pagestyle{plain}
-    \thispagestyle{empty}  
-
-    %% orchestrate the proposal prolog pages here. -- Shanhe
-    \maketitlepage
-    \makeabstractpage
-    %%-- end of prolog, start of thesis
-    \newpage
-    \pagestyle{plain}
-    \renewcommand{\thepage}{\arabic{page}}
-}
-
 %%--The prolog pages for thesie
-\newcommand{\makeThesisProlog}{
+\newcommand{\makeProlog}{
 
     \bigskip
     \setcounter{page}{1}
@@ -265,14 +288,13 @@
 
 %%--------------------------------------------
 %%--The copyright page.
-%%--The abstract page
 \newcommand{\makecopyrightpage}{
   \newpage\pagestyle{empty} % no page number on copyright page -- Ed
   \begin{center}
     \begin{singlespace}
     \vspace*{\fill}
     \fontsize{12}{12}\selectfont
-    \textcopyright~Copyright by~\thesis@author~2016
+    \textcopyright~Copyright by~\thesis@author~\thesis@year
     \end{singlespace}
   \end{center}
 }
@@ -306,32 +328,32 @@
         \hspace{.1in}  \\ % 2 lines between approved and signature line -- Ruth
     \underline{\hspace*{\thesisapprovalwidth}}\\
     {\small Committee Chair\\
-    \thesis@memberi, \thesis@positioni\\
-    The College of William and Mary}
+    \thesis@memberi, \thesis@depti\\
+    \thesis@orgi}
         \hspace{.1in}  \\
         \hspace{.1in}  \\
         \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
     \underline{\hspace*{\thesisapprovalwidth}}\\
-    {\small\thesis@memberii, \thesis@positionii\\
-    The College of William and Mary}
+    {\small\thesis@memberii, \thesis@deptii\\
+    \thesis@orgii}
         \hspace{.1in}  \\
         \hspace{.1in}  \\
         \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
     \underline{\hspace*{\thesisapprovalwidth}}\\
-    {\small\thesis@memberiii, \thesis@positioniii\\
-    The College of William and Mary}
+    {\small\thesis@memberiii, \thesis@deptiii\\
+    \thesis@orgiii}
         \hspace{.1in}  \\
         \hspace{.1in}  \\
         \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
     \underline{\hspace*{\thesisapprovalwidth}}\\
-    {\small\thesis@memberiv, \thesis@positioniv\\
-    University of Delaware}
+    {\small\thesis@memberiv, \thesis@deptiv\\
+    \thesis@orgiv}
         \hspace{.1in}  \\
         \hspace{.1in}  \\
         \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
     \underline{\hspace*{\thesisapprovalwidth}}\\
-    {\small\thesis@memberv, \thesis@positionv\\
-    The College of William and Mary} % change this if your outside member is from outside the College
+    {\small\thesis@memberv, \thesis@deptv\\
+    \thesis@orgv} % change this if your outside member is from outside the College
  \end{center}\end{singlespace}
 }
 
@@ -381,16 +403,20 @@
 %%--------------------------------------------
 %%--The tables and/or figures pages
 \newcommand{\maketablesfigurespage}{
-	\newpage
+  \if \@tablelist
+  \newpage
     %\begin{singlespace}
 	\addcontentsline{toc}{chapter}{\rm List of Tables}
 		{\large	\listoftables	}
     %\end{singlespace}
+  \fi
+  \if \@figurelist
 	\newpage
     %\begin{singlespace}
 	\addcontentsline{toc}{chapter}{\rm List of Figures}
 		{\large	\listoffigures	}
     %\end{singlespace}
+  \fi
 }
 
 %%--------------------------------------------
@@ -457,7 +483,7 @@
      \large \thesis@authorx \\
      Department of Computer Science \\
      The College of William and Mary in Virginia \\
-     Advisor: \ThesisAdvisor  \\
+     Advisor: \thesis@advisor  \\
      \thesis@title
      \end{center}
 }

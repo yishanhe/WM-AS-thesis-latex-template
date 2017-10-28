@@ -50,7 +50,12 @@
 % The body of the text body must be typeset in a font size of at least 10pt but no more than 12pt.
 
 
-\documentclass[11pt]{wmthesis}
+\documentclass[11pt, proposal]{wmthesis}
+% Options
+% -------
+
+
+
 
 % *** PACKAGES YOU WANT TO INCLUDE ***
 
@@ -155,9 +160,10 @@
 %%--*IMPORTANT* Title cannot be in ALL CAPS -- Ruth
 \thesisTitle{Dissertation Title}
 \thesisAuthor[Student Name]{Student Name}
-\thesisMonth{June}
-\thesisYear{2016}
-\thesisAdvisor{Advisor Name}
+\thesisMonth{May}
+\thesisYear{2017}
+% \thesisAdvisor{Advisor Name}
+\thesisAdvisor{Professor Qun Li}
 
 
 %%-- Degrees earned previous to Ph.D.
@@ -169,6 +175,8 @@
 % \thesisLocation{Xiangyang, Hubei, China}
 \thesisHometown{Xiangyang, Hubei, China}
 
+% "List all previous degrees with the most recent degree first,
+% [e.g. Master of Arts,University of Colorado-Boulder, 1987]."
 \thesisDegreeOne{Bachelor of Engineer, Huazhong University of Science and Technology, Wuhan China, 2010}
 \thesisDegreeTwo{Master of Science, Huazhong University of Science and Technology, Wuhan China, 2010}
 % \thesisDegreeThree{Master of Science, Huazhong University of Science and Technology, Wuhan China, 2010}
@@ -176,11 +184,15 @@
 \thesisDepartment{Department of Physics}
 
 %%-- Committee members
-\thesisCommittee[Computer Science]{\ThesisAdvisor}
-\thesisCommittee[Computer Science]{Professor Weizhen Mao}
-\thesisCommittee[Computer Science]{Associate Professor Denys Poshyvanyk}
-\thesisCommittee[Electrical and Computer Engineering]{Professor Haining Wang}
-\thesisCommittee[Applied Science]{Outside Committee Member}
+%% example 
+%%  \thesisCommittee[Department]{Professor John Doe}{ABC College}
+%%  \thesisCommittee{John Doe}{XYZ Company}
+%%  \thesisCommittee[Copration Department]{John Doe}{XYZ Company}
+\thesisCommittee[Computer Science]{Professor Qun Li}{The College of William and Mary}
+\thesisCommittee[Computer Science]{Professor Weizhen Mao}{The College of William and Mary}
+\thesisCommittee[Computer Science]{Associate Professor Denys Poshyvanyk}{The College of William and Mary}
+\thesisCommittee[Electrical and Computer Engineering]{Professor Haining Wang}{The College of William and Mary}
+\thesisCommittee[Applied Science]{Outside Committee Member}{The College of William and Mary}
 
 
 %%-- Insert contents of abstract.tex, acknowledge.tex and the dedication.  Don't
@@ -194,7 +206,7 @@
 
 
 %%--Create the thesis Prolog
-\makeThesisProlog
+\makeProlog
 
 
 %%-- contents of the actual thesis feel free to \input as many files as you want
