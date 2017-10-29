@@ -1,42 +1,41 @@
-%%---------------------------------------------------
-% The commented out commands are not needed for
-% the 10/08/12 standards. Other commands have been
-% modified to match these standards.  -- Ruth
-%%---------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{wmthesis}
 
-% Helper
-% ------
+%%---------------------------------------------------
+%%-- Helper. Credit to the sigplanconf.cls  -- Shanhe
+%%---------------------------------------------------
 
 % boolean
 \def \@true {TT}
 \def \@false {FL}
 \def \@setflag #1=#2{\edef #1{#2}}%              \flag = boolean
 
+% handler for unsupported options
 \def \@unsupportedoption #1{%
 \ClassError{proc}{The standard '#1' option is not supported.}}
 
 
 %%---------------------------------------------------
-%%-- Load the base class and modify current macros.
+%%-- Options, fully customize the template -- Shanhe
 %%---------------------------------------------------
 
-%-- Adding options to fully customize the template -- Shanhe
-
-% Options
-% -------
-% default high level options
+%-- default high level options
+% current we support only two types: proposal, dissertation.
 \@setflag \@proposal = \@false
 \@setflag \@dissertation = \@true
-% default low level options
+
+%-- default low level options
+% high level options is the orchestration of low level options.
 \@setflag \@tablelist = \@true
 \@setflag \@figurelist = \@true
-\@setflag \@abstract = \@true
+
+\@setflag \@title = \@true
+\@setflag \@copyright = \@true
+\@setflag \@approval = \@true
 \@setflag \@acknowledgement= \@true
 
-% high level options
+% high level option configurations
 \DeclareOption{proposal}{%
   \@setflag \@proposal = \@true
   \@setflag \@dissertation = \@false
@@ -114,6 +113,8 @@
 %%--------------------------------------------
 
 %%--Macros used for the construction of the title page.
+
+%%--Meta
 \newcommand{\thesisTitle}[1]{\gdef\thesis@title{#1}}
 \newcommand{\thesisYear}[1]{\gdef\thesis@year{#1}}
 \newcommand{\thesisMonth}[1]{\gdef\thesis@month{#1}}
@@ -177,38 +178,23 @@
 \newcommand{\makeProlog}{
 
     \bigskip
-    \setcounter{page}{1}
-    \renewcommand{\thepage}{\roman{page}}
+    % \setcounter{page}{1}
+    % \renewcommand{\thepage}{\roman{page}}
     \pagestyle{plain}
     \thispagestyle{empty}
 
-%%--------------------------------------------
-% Any of these pages can be individually commented
-% out for non-final versions if desired -- Ruth
-%%--------------------------------------------
-%%-- title page
-  \maketitlepage
-%%--------------------------------------------
-%%-- copyright page
-  \makecopyrightpage
-%%--------------------------------------------
-%%-- approval page
-	\makeapprovalpage
-%%--------------------------------------------
-%%-- abstract
-	\makeabstractpage
-%%--------------------------------------------
-%-TOC pages
-	\newpage
-	\pagestyle{plain}\setcounter{page}{1}
-  \begingroup%
-  \renewcommand{\bfseries}{\relax}% %prevent TOC from being bold
-	{\large \tableofcontents }
-  \endgroup%
 
-%%--------------------------------------------
-%%-- acknowledgements
-	\makeacknowledgepage
+    \maketitlepage % required
+
+    \makecopyrightpage
+
+	  \makeapprovalpage
+
+	  \makeabstractpage
+
+    \maketocpage % required
+
+	  \makeacknowledgepage
 %%--------------------------------------------
 %%-- dedication page
 	\makededicationpage
@@ -216,174 +202,201 @@
 %%-- List of tables and/or figures.
 	\maketablesfigurespage
 %%--------------------------------------------
-%%-- half-title page
-	\makehalftitlepage
+% %%-- half-title page
+% 	\makehalftitlepage
 %%--------------------------------------------
 %%-- end of prolog, start of thesis
-	\newpage
+  \newpage
+  \setcounter{page}{1}
 	\pagestyle{plain}
 	\renewcommand{\thepage}{\arabic{page}}
 }
 
 
-%%--------------------------------------------
-%%-- Prolog related commands.
-%%--------------------------------------------
-
-%%--Page titles.
 \def\acknowledgeName{ACKNOWLEDGMENTS}
 \def\abstractName{ABSTRACT}
 
 %%--------------------------------------------
 %%--The title page.
 \newcommand{\maketitlepage}{
- \begin{titlepage}\begin{singlespace}
- \begin{center}{\large
-    \thesis@title \\
-       \hspace{.1in}  \\
-       \hspace{.1in}  \\
-       \hspace{.1in}  \\
-       \hspace{.1in}  \\
-       \hspace{.1in}  \\
-       \hspace{.1in}  \\
-       \hspace{.1in}  \\
-       \hspace{.1in}  \\ %8 lines between title and author name -- Ruth
-    \thesis@authorx \\
-        \hspace{.1in}  \\ %1 line between name and hometown -- Ruth
-    \ifdefined\ThesisLocation \ThesisLocation \\ \else \ifdefined\ThesisHometown \ThesisHometown \\ \fi \fi % adding condition statements for flexibility -- Shanhe
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\ % 4 lines between hometown and prior degrees -- Ruth
-    \ifdefined\ThesisDegreeOne \ThesisDegreeOne \\ \fi 
-    \ifdefined\ThesisDegreeTwo \ThesisDegreeTwo \\ \fi
-    \ifdefined\ThesisDegreeThree \ThesisDegreeThree \\ \fi
-    % Support at most 3 previous degrees if there are more degrees, you have to manually add them. -- Shanhe
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\ % 4 lines between prior degrees and purpose statement -- Ruth
-    {A Dissertation presented to the Graduate Faculty\\
-         of the College of William and Mary in Candidacy for the Degree of\\
-         Doctor of Philosophy}\\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\ % 7 lines between purpose statement and department -- Ruth
-    {\ifdefined\ThesisDepartment \ThesisDepartment \else Department of Computer Science \fi}
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\ % 5 lines between department and college -- Ruth
-    {The College of William and Mary\\
-       \thesis@month\ \thesis@year}
-    }
- \end{center}\end{singlespace}
- \end{titlepage}
+  \if \@title
+    \begin{titlepage}
+      \begin{singlespace}
+        \begin{center}{\large
+            \thesis@title \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\ %8 lines between title and author name -- Ruth
+            \thesis@authorx \\
+                \hspace{.1in}  \\ %1 line between name and hometown -- Ruth
+            \ifdefined\ThesisLocation \ThesisLocation \\ \else \ifdefined\ThesisHometown \ThesisHometown \\ \fi \fi % adding condition statements for flexibility -- Shanhe
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\ % 4 lines between hometown and prior degrees -- Ruth
+            \ifdefined\ThesisDegreeOne \ThesisDegreeOne \\ \fi 
+            \ifdefined\ThesisDegreeTwo \ThesisDegreeTwo \\ \fi
+            \ifdefined\ThesisDegreeThree \ThesisDegreeThree \\ \fi
+            % Support at most 3 previous degrees if there are more degrees, you have to manually add them. -- Shanhe
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\ % 4 lines between prior degrees and purpose statement -- Ruth
+            {A Dissertation presented to the Graduate Faculty\\
+                of the College of William and Mary in Candidacy for the Degree of\\
+                Doctor of Philosophy}\\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\ % 7 lines between purpose statement and department -- Ruth
+            {\ifdefined\ThesisDepartment \ThesisDepartment \else Department of Computer Science \fi}
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\
+                \hspace{.1in}  \\ % 5 lines between department and college -- Ruth
+            {The College of William and Mary\\
+              \thesis@month\ \thesis@year}
+            }
+        \end{center}
+      \end{singlespace}
+    \end{titlepage}
+  \fi
  }
 
 %%--------------------------------------------
 %%--The copyright page.
 \newcommand{\makecopyrightpage}{
-  \newpage\pagestyle{empty} % no page number on copyright page -- Ed
-  \begin{center}
-    \begin{singlespace}
-    \vspace*{\fill}
-    \fontsize{12}{12}\selectfont
-    \textcopyright~Copyright by~\thesis@author~\thesis@year
-    \end{singlespace}
-  \end{center}
+  \if \@copyright
+    \newpage\pagestyle{empty} % no page number on copyright page -- Ed
+    \begin{center}
+      \begin{singlespace}
+      \vspace*{\fill}
+      \fontsize{12}{12}\selectfont
+      \textcopyright~Copyright by~\thesis@author~\thesis@year
+      \end{singlespace}
+    \end{center}
+  \fi
 }
 
 %%--------------------------------------------
 %%--The approval page.
 \newcommand{\thesisapprovalwidth}{3in}
+
 \newcommand{\makeapprovalpage}{
- \newpage
- \pagestyle{empty} % no page number on approval page -- Ruth
- \begin{singlespace}
- \begin{center}
-    {\Large APPROVAL PAGE}\\
-       {\large \hspace{.1in} } \\
-       {\large \hspace{.1in} } \\
-       {\large \hspace{.1in} } \\ % 3 lines between title and statement -- Ruth
-    {\large This Dissertation is submitted in partial fulfillment of \\
-         the requirements for the degree of}\\
-        \hspace{.1in}  \\ % 1 lines between statements
-    {\large Doctor of Philosophy}\\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\ % 3 lines between statement and signature line -- Ruth
-    \underline{\hspace*{\thesisapprovalwidth}}\\
-    {\small \thesis@author}\\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\ % 3 lines between signature line and approved -- Ruth
-    {\large Approved by the Committee, \thesis@month~\thesis@year}\\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\ % 2 lines between approved and signature line -- Ruth
-    \underline{\hspace*{\thesisapprovalwidth}}\\
-    {\small Committee Chair\\
-    \thesis@memberi, \thesis@depti\\
-    \thesis@orgi}
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
-    \underline{\hspace*{\thesisapprovalwidth}}\\
-    {\small\thesis@memberii, \thesis@deptii\\
-    \thesis@orgii}
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
-    \underline{\hspace*{\thesisapprovalwidth}}\\
-    {\small\thesis@memberiii, \thesis@deptiii\\
-    \thesis@orgiii}
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
-    \underline{\hspace*{\thesisapprovalwidth}}\\
-    {\small\thesis@memberiv, \thesis@deptiv\\
-    \thesis@orgiv}
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\
-        \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
-    \underline{\hspace*{\thesisapprovalwidth}}\\
-    {\small\thesis@memberv, \thesis@deptv\\
-    \thesis@orgv} % change this if your outside member is from outside the College
- \end{center}\end{singlespace}
+  \if \@approval
+    \newpage
+    \pagestyle{empty} % no page number on approval page -- Ruth
+    \begin{singlespace}
+      \begin{center}
+          {\Large APPROVAL PAGE}\\
+            {\large \hspace{.1in} } \\
+            {\large \hspace{.1in} } \\
+            {\large \hspace{.1in} } \\ % 3 lines between title and statement -- Ruth
+          {\large This Dissertation is submitted in partial fulfillment of \\
+              the requirements for the degree of}\\
+              \hspace{.1in}  \\ % 1 lines between statements
+          {\large Doctor of Philosophy}\\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\ % 3 lines between statement and signature line -- Ruth
+          \underline{\hspace*{\thesisapprovalwidth}}\\
+          {\small \thesis@author}\\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\ % 3 lines between signature line and approved -- Ruth
+          {\large Approved by the Committee, \thesis@month~\thesis@year}\\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\ % 2 lines between approved and signature line -- Ruth
+          \underline{\hspace*{\thesisapprovalwidth}}\\
+          {\small Committee Chair\\
+          \thesis@memberi, \thesis@depti\\
+          \thesis@orgi}
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
+          \underline{\hspace*{\thesisapprovalwidth}}\\
+          {\small\thesis@memberii, \thesis@deptii\\
+          \thesis@orgii}
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
+          \underline{\hspace*{\thesisapprovalwidth}}\\
+          {\small\thesis@memberiii, \thesis@deptiii\\
+          \thesis@orgiii}
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
+          \underline{\hspace*{\thesisapprovalwidth}}\\
+          {\small\thesis@memberiv, \thesis@deptiv\\
+          \thesis@orgiv}
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\
+              \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
+          \underline{\hspace*{\thesisapprovalwidth}}\\
+          {\small\thesis@memberv, \thesis@deptv\\
+          \thesis@orgv} % change this if your outside member is from outside the College
+      \end{center}
+    \end{singlespace}
+  \fi
 }
 
 %%--------------------------------------------
 %%--The abstract page
+%%  requried, not numbered
 \newcommand{\makeabstractpage}{
-	\newpage\pagestyle{empty} % no page number on abstract page -- Ruth
-	\begin{center}
-		\Large\abstractName
-	\end{center}
-	\begin{singlespace}
-  \begin{flushleft}
-		\input{\thesis@abstract}
-  \end{flushleft}
-	\end{singlespace}
+  \if \@abstract
+    \newpage
+    \pagestyle{empty} % no page number on abstract page -- Ruth
+    \begin{center}
+      \Large\abstractName
+    \end{center}
+    \begin{singlespace}
+      \begin{flushleft}
+        \input{\thesis@abstract}
+      \end{flushleft}
+    \end{singlespace}
+  \fi
+}
+
+%%--------------------------------------------
+%%--The toc page
+%% required, numbered with Roman number i
+\newcommand{\maketocpage}{
+  \newpage
+  \pagestyle{plain}
+  \setcounter{page}{1}
+  \renewcommand{\thepage}{\roman{page}}
+  \begingroup%
+  \renewcommand{\bfseries}{\relax}% %prevent TOC from being bold
+  {\large \tableofcontents }
+  \endgroup%    
 }
 
 %%--------------------------------------------
 %%--The acknowledgement page
+%% required in thesie, not in proposal
 \newcommand{\makeacknowledgepage}{
-	\newpage
-	\begin{center}
-		\addcontentsline{toc}{chapter}{\rm Acknowledgments}
-		\Large\acknowledgeName
-	\end{center}
-	\begin{singlespace}
-  \begin{flushleft}
-		\input{\thesis@ack}
-  \end{flushleft}
-	\end{singlespace}
+  \if \@acknowledgement
+    \newpage
+    \begin{center}
+      \addcontentsline{toc}{chapter}{\rm Acknowledgments}
+      \Large\acknowledgeName
+    \end{center}
+    \begin{singlespace}
+    \begin{flushleft}
+      \input{\thesis@ack}
+    \end{flushleft}
+    \end{singlespace}
+  \fi
 }
 
 %%--------------------------------------------
@@ -399,25 +412,36 @@
 	\end{center}
 }
 
+%%--------------------------------------------
+%%--The approval page.
+
 
 %%--------------------------------------------
-%%--The tables and/or figures pages
-\newcommand{\maketablesfigurespage}{
+%%--The tables pages
+\newcommand{\maketablespage}{%
   \if \@tablelist
-  \newpage
+    \newpage
     %\begin{singlespace}
-	\addcontentsline{toc}{chapter}{\rm List of Tables}
+	  \addcontentsline{toc}{chapter}{\rm List of Tables}
 		{\large	\listoftables	}
     %\end{singlespace}
   \fi
+}
+
+%%--------------------------------------------
+%%--The figures pages
+\newcommand{\makefigurespage}{%
   \if \@figurelist
-	\newpage
+	  \newpage
     %\begin{singlespace}
-	\addcontentsline{toc}{chapter}{\rm List of Figures}
+	  \addcontentsline{toc}{chapter}{\rm List of Figures}
 		{\large	\listoffigures	}
     %\end{singlespace}
   \fi
 }
+
+% TODO: compliance page
+% http://www.wm.edu/as/graduate/_forms/physicalstandardsforms/use-this-compliancepagetemplate-9-16-16.pdf
 
 %%--------------------------------------------
 %%--The half-title page
@@ -426,7 +450,7 @@
 % numbered as such.
 \newcommand{\makehalftitlepage}{
 	\newpage
-	\setcounter{page}{1}
+	% \setcounter{page}{1}
 	\pagestyle{empty}
 	\begin{center}
 		\vspace*{3in}
