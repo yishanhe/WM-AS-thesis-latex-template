@@ -213,7 +213,7 @@
               \hspace{.1in}  \\
               \hspace{.1in}  \\
               \hspace{.1in}  \\ % 4 lines between prior degrees and purpose statement -- Ruth
-          {A Dissertation presented to the Graduate Faculty\\
+          {A \if \@thesis Dissertation \else Proposal \fi presented to the Graduate Faculty\\
               of the College of William and Mary in Candidacy for the Degree of\\
               Doctor of Philosophy}\\
               \hspace{.1in}  \\
@@ -258,11 +258,11 @@
   \pagestyle{empty}
   \begin{singlespace}
     \begin{center}
-        {\Large APPROVAL PAGE}\\
+        \if \@thesis {\Large APPROVAL PAGE} \else {\Large Oral Exam Committee} \fi\\
           {\large \hspace{.1in} } \\
           {\large \hspace{.1in} } \\
           {\large \hspace{.1in} } \\ % 3 lines between title and statement -- Ruth
-        {\large This Dissertation is submitted in partial fulfillment of \\
+        {\large This \if \@thesis Dissertation \else Proposal \fi is submitted in partial fulfillment of \\
             the requirements for the degree of}\\
             \hspace{.1in}  \\ % 1 lines between statements
         {\large Doctor of Philosophy}\\
@@ -274,7 +274,7 @@
             \hspace{.1in}  \\
             \hspace{.1in}  \\
             \hspace{.1in}  \\ % 3 lines between signature line and approved -- Ruth
-        {\large Approved by the Committee, \thesis@month~\thesis@year}\\
+        {\large \if \@thesis Approved \else Reviewed \fi by the Committee, \thesis@month~\thesis@year}\\
             \hspace{.1in}  \\
             \hspace{.1in}  \\ % 2 lines between approved and signature line -- Ruth
         \underline{\hspace*{\thesisapprovalwidth}}\\
@@ -302,9 +302,11 @@
             \hspace{.1in}  \\
             \hspace{.1in}  \\
             \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
-        \underline{\hspace*{\thesisapprovalwidth}}\\
-        {\small\thesis@memberv, \thesis@deptv\\
-        \thesis@orgv} % change this if your outside member is from outside the College
+        \if \@thesis
+          \underline{\hspace*{\thesisapprovalwidth}}\\
+          {\small\thesis@memberv, \thesis@deptv\\
+          \thesis@orgv} 
+        \fi
     \end{center}
   \end{singlespace}
 }
