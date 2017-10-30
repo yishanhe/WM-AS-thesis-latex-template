@@ -37,8 +37,8 @@ http://www.wm.edu/as/graduate/studentresources/thesis-dissertations/physicalstan
 - Shanhe Yi
 
 > Committed with the physical standards set on 2017 (on-going). Refactored the 
-> wmthesis class to make it easier to use. The first Github repository 
-> maintainer. -- Shanhe Yi
+> wmthesis class to make it easier to understand and modify. 
+> Maintain the first Github repository. -- Shanhe Yi
 
 ## Usage
 
