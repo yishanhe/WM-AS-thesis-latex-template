@@ -311,17 +311,23 @@
   \end{singlespace}
 }
 
+
 %%--------------------------------------------
 %%--The abstract page
+%%--Title 14 and content 12, single space between 
+% title and content.  -- Shanhe
+%%-- @see https://en.wikibooks.org/wiki/LaTeX/Fonts
+%%-- 11pt documentclass:
+%%-- Large is 14.4pt and large is 12pt.
 \newcommand{\makeabstractpage}{
   \newpage
   \pagestyle{empty}
-  \begin{center}
-    \Large\abstractName
-  \end{center}
   \begin{singlespace}
+    \begin{center}
+      \Large\abstractName
+    \end{center}
     \begin{flushleft}
-      \input{\thesis@abstract}
+      \large{\parindent0pt \input{\thesis@abstract}}
     \end{flushleft}
   \end{singlespace}
 }
