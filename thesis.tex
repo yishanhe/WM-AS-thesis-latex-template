@@ -94,21 +94,21 @@
 
 %%-- This is how to set Arial font using XeLaTeX or LuaLaTeX. -- Shanhe
 %% See David's note at the beginning of this file how to install Arial font on department machine.
-\usepackage{fontspec} % only use it with XeLaTeX or LuaLaTeX
-\setmainfont{Arial}
+% \usepackage{fontspec} % only use it with XeLaTeX or LuaLaTeX
+% \setmainfont{Arial}
 
 
-%%-- This is how to set Arial font using LaTeX -- Shanhe
+%%-- This is how to set Arial font using LaTeX/PdfLaTeX -- Shanhe
 %% How to install uarial package in Mac OS (required MacTeX, /Library/TeX/texbin in your path). *nix with TexLive should be similar. - Shanhe
 %%   1. curl --remote-name https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
 %%   2. sudo texlua install-getnonfreefonts
 %%   3. sudo getnonfreefonts --sys -a
-% \usepackage{uarial}
-% \renewcommand{\familydefault}{\sfdefault}
-% % load a Helvetica clone in case 
-% \renewcommand{\rmdefault}{phv} % Arial
-% \renewcommand{\sfdefault}{phv} % Arial
-% \usepackage[T1]{fontenc}
+\usepackage{uarial}
+\renewcommand{\familydefault}{\sfdefault}
+% load a Helvetica clone in case 
+\renewcommand{\rmdefault}{phv} % Arial
+\renewcommand{\sfdefault}{phv} % Arial
+\usepackage[T1]{fontenc}
 
 
 %%-- remove bold for table of contents (TOC) as per physical standards

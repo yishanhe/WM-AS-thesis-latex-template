@@ -1,12 +1,22 @@
 ## XELATEX
+# all:
+# 	xelatex thesis
+# 	bibtex thesis
+# 	xelatex thesis
+# 	xelatex thesis
+
+# simple:
+# 	xelatex thesis
+
+## PDFLATEX
 all:
-	xelatex thesis
+	pdflatex thesis
 	bibtex thesis
-	xelatex thesis
-	xelatex thesis
+	pdflatex thesis
+	pdflatex thesis
 
 simple:
-	xelatex thesis
+	pdflatex thesis
 
 ## LATEX
 # all:
