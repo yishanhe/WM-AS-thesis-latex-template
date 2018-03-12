@@ -40,21 +40,22 @@
 % line (xelatex) and to be easier to use / understand.
 %
 
-% At the time (Oct. 2017), please refer 
+% At the time (Feb. 2018), please refer 
 % http://www.wm.edu/as/graduate/studentresources/thesis-dissertations/physicalstandards/index.php
 % for the latest standard.
 
 
 
 \documentclass[11pt]{wmthesis}
-%\documentclass[11pt, proposal]{wmthesis}
+
 % Options
 % -------
-% proposal - if you are writing a proposal
-
+% proposal - if you are writing a proposal, e.g., \documentclass[11pt, proposal]{wmthesis}
 
 
 % *** PACKAGES YOU WANT TO INCLUDE ***
+\usepackage{import} % for subimport each proj
+\usepackage{lipsum} % for dummy text
 
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
@@ -151,24 +152,24 @@
 \thesisTitle{Dissertation Title}
 \thesisAuthor[Student Name]{Student Name}
 \thesisMonth{May}
-\thesisYear{2017}
-% \thesisAdvisor{Advisor Name}
-\thesisAdvisor{Professor Qun Li}
+\thesisYear{2018}
+\thesisAdvisor{Professor Qun Li} % Advisor name with title
 
 
 %%-- Degrees earned previous to Ph.D.
 %% note that the degree should be spelled out, not abbreviated
 
-% @deprecated  this location should be hometown, using thesisHometown{} instead
+
 % "Provide your hometown and state in the following format [e.g. St. Louis, Missouri]. 
 % International students should enter their hometown, state/province, and country [e.g. Montreal, Quebec, Canada]"
-% \thesisLocation{Xiangyang, Hubei, China}
-% \thesisHometown{Xiangyang, Hubei, China}
+% \thesisLocation{Xiangyang, Hubei, China} % @deprecated  this location should be hometown, using thesisHometown{} instead
+\thesisHometown{Xiangyang, Hubei, China}
 
 % "List all previous degrees with the most recent degree first,
 % [e.g. Master of Arts,University of Colorado-Boulder, 1987]."
-\thesisDegreeOne{Bachelor of Engineer, Huazhong University of Science and Technology, 2010}
-\thesisDegreeTwo{Master of Science, Huazhong University of Science and Technology, 2013}
+\thesisDegreeOne{Master of Science, Huazhong University of Science and Technology, 2013}
+\thesisDegreeTwo{Bachelor of Engineer, Huazhong University of Science and Technology, 2010}
+
 
 \thesisDepartment{Department of Computer Science}
 

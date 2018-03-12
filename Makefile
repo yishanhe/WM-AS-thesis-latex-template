@@ -45,5 +45,7 @@ clean:
 	rm -f *.lof
 	rm -f *.fdb_latexmk
 	rm -f *.fls
+	rm -f *.synctex.gz
+
 
 
