@@ -80,3 +80,105 @@ live this template !
 
 
 
+## Font problem
+
+According to the latest feedback from Office of Graduate Studies, Arts and Sciences, accepted
+font is either Arial or Computer Modern.
+
+Given that Arial is a commericial font, not available to all platforms (link Linux), we recommand
+to use Computer Modern.
+
+To use Computer Modern, just add
+
+```latex
+\usepackage[T1]{fontenc}
+```
+
+### Ways of install Arial font
+
+Depends on you are using pdflatex, or latex, or xelatex, and the platforms,  there are different ways
+to install arial fonts, we list a few here and expect pull request to this repo for latest methods to
+get the Arial font.
+
+#### MacOS or Ubuntu
+
+On Mac OS, you can install MacTex to get the Tex environment.
+
+##### pdflatex or latex
+
+Add fonts using the following commands
+
+```bash
+curl --remote-name https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+sudo texlua install-getnonfreefonts
+sudo getnonfreefonts --sys -a
+```
+
+in you `thesis.tex`, put
+
+```tex
+\usepackage[T1]{fontenc}
+\usepackage{uarial}
+\renewcommand{\familydefault}{\sfdefault}
+```
+
+
+then, in your `Makefile`, uncomment
+
+```
+latex:
+	latex thesis
+	bibtex thesis
+	latex thesis
+	latex thesis
+	dvips thesis.dvi
+	ps2pdf thesis.ps
+```
+
+or
+
+```
+pdflatex:
+	pdflatex thesis
+	bibtex thesis
+	pdflatex thesis
+	pdflatex thesis
+```
+is uncommented
+
+then `make latex` or `make pdflatex`to compile the latex.
+
+#### MacOS or Windows - Using XeLaTex LuaLaTex
+
+Since Mac/Win has the TrueType Arial font installed.
+You can using xelatex or lualatex to do this.
+
+in you `thesis.tex`, put
+
+```
+\usepackage{fontspec}
+\setmainfont{Arial}
+```
+
+
+then, in your `Makefile`, make sure 
+
+```
+xelatex:
+	xelatex thesis
+	bibtex thesis
+	xelatex thesis
+	xelatex thesis
+```
+is uncommented
+
+then `make xelatex` to compile the latex.
+
+
+
+
+
+
+
+## References
+- College of William & Mary is preferred. http://brand.wm.edu/index.php/editorial/

@@ -1,37 +1,27 @@
 ## XELATEX
-# all:
-# 	xelatex thesis
-# 	bibtex thesis
-# 	xelatex thesis
-# 	xelatex thesis
+xelatex:
+	xelatex thesis
+	bibtex thesis
+	xelatex thesis
+	xelatex thesis
 
-# simple:
-# 	xelatex thesis
 
 ## PDFLATEX
-all:
+pdflatex:
 	pdflatex thesis
 	bibtex thesis
 	pdflatex thesis
 	pdflatex thesis
 
-simple:
-	pdflatex thesis
 
 ## LATEX
-# all:
-# 	latex thesis
-# 	bibtex thesis
-# 	latex thesis
-# 	latex thesis
-# 	dvips thesis.dvi
-# 	ps2pdf thesis.ps
-
-# simple:
-# 	latex thesis
-# 	latex thesis
-# 	dvips thesis.dvi
-# 	ps2pdf thesis.ps
+latex:
+	latex thesis
+	bibtex thesis
+	latex thesis
+	latex thesis
+	dvips thesis.dvi
+	ps2pdf thesis.ps
 
 clean:
 	rm -f *aux

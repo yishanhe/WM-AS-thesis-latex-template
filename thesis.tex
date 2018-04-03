@@ -100,17 +100,18 @@
 % \setmainfont{Arial}
 
 
-%%-- This is how to set Arial font using LaTeX/PdfLaTeX -- Shanhe
-%% How to install uarial package in Mac OS (required MacTeX, /Library/TeX/texbin in your path). *nix with TexLive should be similar. - Shanhe
-%%   1. curl --remote-name https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
-%%   2. sudo texlua install-getnonfreefonts
-%%   3. sudo getnonfreefonts --sys -a
+% %%-- This is how to set Arial font using LaTeX -- Shanhe
+% %% If you don't install the font into tex packages, then you will just get Computer Modern font.
+% %% How to install uarial package in Mac OS (required MacTeX, /Library/TeX/texbin in your path). *nix with TexLive should be similar. - Shanhe
+% %%   1. curl --remote-name https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+% %%   2. sudo texlua install-getnonfreefonts
+% %%   3. sudo getnonfreefonts --sys -a
+\usepackage[T1]{fontenc}
 \usepackage{uarial}
 \renewcommand{\familydefault}{\sfdefault}
-% load a Helvetica clone in case 
-\renewcommand{\rmdefault}{phv} % Arial
-\renewcommand{\sfdefault}{phv} % Arial
-\usepackage[T1]{fontenc}
+
+% %%-- This is how to use Computer Modern font.
+% \usepackage[T1]{fontenc}
 
 
 %%-- remove bold for table of contents (TOC) as per physical standards
@@ -178,11 +179,11 @@
 %%  \thesisCommittee[Department]{Professor John Doe}{ABC College}
 %%  \thesisCommittee{John Doe}{XYZ Company}
 %%  \thesisCommittee[Copration Department]{John Doe}{XYZ Company}
-\thesisCommittee[Computer Science]{Professor A}{The College of William and Mary}
-\thesisCommittee[Computer Science]{Professor B}{The College of William and Mary}
-\thesisCommittee[Computer Science]{Professor C}{The College of William and Mary}
-\thesisCommittee[Electrical and Computer Engineering]{Professor D}{The College of William and Mary}
-\thesisCommittee[Applied Science]{Outside Committee Member}{The College of William and Mary}
+\thesisCommittee[Computer Science]{Professor A}{College of William \& Mary}  % use {College of William \& Mary} -- Shanhe
+\thesisCommittee[Computer Science]{Professor B}{College of William \& Mary}
+\thesisCommittee[Computer Science]{Professor C}{College of William \& Mary}
+\thesisCommittee[Electrical and Computer Engineering]{Professor D}{College of William \& Mary}
+\thesisCommittee[Applied Science]{Outside Committee Member}{College of William \& Mary}
 
 
 %%-- Insert contents of abstract.tex, acknowledge.tex and the dedication.  Don't
