@@ -100,13 +100,15 @@ Depends on you are using pdflatex, or latex, or xelatex, and the platforms,  the
 to install arial fonts, we list a few here and expect pull request to this repo for latest methods to
 get the Arial font.
 
-#### MacOS or Ubuntu
+#### MacOS or Ubuntu 
+
+This method shows font as `A030` (tested in edit mode of PDFExpert), but it is Arial indeed. Might make this method less favored.
 
 On Mac OS, you can install MacTex to get the Tex environment.
 
 ##### pdflatex or latex
 
-Add fonts using the following commands
+Add fonts using the following commands:
 
 ```bash
 curl --remote-name https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
@@ -114,7 +116,7 @@ sudo texlua install-getnonfreefonts
 sudo getnonfreefonts --sys -a
 ```
 
-in you `thesis.tex`, put
+In you `thesis.tex`, put
 
 ```tex
 \usepackage[T1]{fontenc}
@@ -123,7 +125,7 @@ in you `thesis.tex`, put
 ```
 
 
-then, in your `Makefile`, uncomment
+Then, in your `Makefile`, make sure
 
 ```
 latex:
@@ -149,6 +151,8 @@ is uncommented
 then `make latex` or `make pdflatex`to compile the latex.
 
 #### MacOS or Windows - Using XeLaTex LuaLaTex
+
+This method shows font as `Arial` (tested in edit mode of PDFExpert).
 
 Since Mac/Win has the TrueType Arial font installed.
 You can using xelatex or lualatex to do this.
@@ -181,4 +185,4 @@ then `make xelatex` to compile the latex.
 
 
 ## References
-- College of William & Mary is preferred. http://brand.wm.edu/index.php/editorial/
+- University Brand Style Guide: Why 'College of William & Mary' is preferred. http://brand.wm.edu/index.php/editorial/
