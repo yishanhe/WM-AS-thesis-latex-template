@@ -94,19 +94,18 @@ To use Computer Modern, just add
 \usepackage[T1]{fontenc}
 ```
 
-### Ways of install Arial font
+### Ways of install Arial font (Since Computer Modem is accepted, this font option is not favored.)
 
 Depends on you are using pdflatex, or latex, or xelatex, and the platforms,  there are different ways
 to install arial fonts, we list a few here and expect pull request to this repo for latest methods to
 get the Arial font.
 
-#### MacOS or Ubuntu 
+#### MacOS or Ubuntu - Using PdfLaTeX or LaTeX
 
-This method shows font as `A030` (tested in edit mode of PDFExpert), but it is Arial indeed. Might make this method less favored.
+This method shows font as `A030` (tested in edit mode of PDFExpert), but it is Arial indeed. 
+Might make this method less favored. Someone using this method needs to get consent from the office lady.
 
 On Mac OS, you can install MacTex to get the Tex environment.
-
-##### pdflatex or latex
 
 Add fonts using the following commands:
 
@@ -150,7 +149,7 @@ is uncommented
 
 then `make latex` or `make pdflatex`to compile the latex.
 
-#### MacOS or Windows - Using XeLaTex LuaLaTex
+#### MacOS or Windows - Using XeLaTeX or LuaLaTeX
 
 This method shows font as `Arial` (tested in edit mode of PDFExpert).
 
@@ -178,9 +177,27 @@ is uncommented
 
 then `make xelatex` to compile the latex.
 
+#### Aria in Ubuntu using XeLaTeX - from David
 
+> Modifications to comply with Physical Standards set on 08/13/2015 done by David T. Nguyen
+>            PhD, February 2016 
+>            Topic: Enhancing Mobile Device System Using Information from Users and Upper Layers
+> Use PDF figures (for some reason EPS figures are not displayed correctly, 
+> you can use `epspdf myfigure.eps` to convert)
 
+Compiling in Ubuntu: use Kile as an editor, and use XeLaTeX button to compile
+Need to instal MS fonts first as follows
 
+```
+sudo apt-get install ttf-mscorefonts-installer
+sudo fc-cache
+```
+
+After that, check with 
+
+```bash
+fc-match Arial
+```
 
 
 
