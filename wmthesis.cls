@@ -52,7 +52,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{setspace}
 \RequirePackage{float}
-\RequirePackage{citesort}
+
 %%--Must change the margin above the Chapter heading to 2 inches
 \RequirePackage{wmchapter} 
 
