@@ -52,10 +52,17 @@
 % -------
 % proposal - if you are writing a proposal, e.g., \documentclass[11pt, proposal]{wmthesis}
 
-\usepackage{tocloft}
+
+\usepackage[titles]{tocloft}
+\newlength\mylength
+\renewcommand\cftchappresnum{\chaptername~}
+\renewcommand\cftchapaftersnum{.}
+\renewcommand{\cftdot}{}
+\settowidth\mylength{\cftchappresnum\cftchapaftersnum\quad}
+\addtolength\cftchapnumwidth{\mylength}
+
 
 % *** PACKAGES YOU WANT TO INCLUDE ***
-\usepackage{import} % for subimport each proj NOTE: may need better solution to import latex folder for each chapter
 \usepackage{lipsum} % for dummy text
 
 % Some very useful LaTeX packages include:
@@ -102,12 +109,10 @@
   \fi
 \fi
 
-% \renewcommand{\rmdefault}{phv} % Arial
-% \renewcommand{\sfdefault}{phv} % Arial
 \usepackage[T1]{fontenc}
 
 \ifxetexorluatex
-    \usepackage{fontspec} % only use it with XeLaTeX or LuaLaTeX, recommende. -- Shanhe
+    \usepackage{fontspec} % only use it with XeLaTeX or LuaLaTeX, recommended. -- Shanhe
     \setmainfont{Arial}
 \else
     % %%-- This is how to set Arial font using LaTeX or PdfLaTeX, not recommended. -- Shanhe
@@ -116,11 +121,10 @@
     % %%   1. curl --remote-name https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
     % %%   2. sudo texlua install-getnonfreefonts
     % %%   3. sudo getnonfreefonts --sys -a
-    \usepackage{uarial}
-    \renewcommand{\familydefault}{\sfdefault}
+    % %% Then uncommen the following two lines.
+    % \usepackage{uarial}
+    % \renewcommand{\familydefault}{\sfdefault}
 \fi
-
-
 
 
 %%-- remove bold for table of contents (TOC) as per physical standards
@@ -134,8 +138,10 @@
 % to Dr. Knuth (author of TeX) on this issue, since the other way looks really
 % crappy.  If you want the first line of every paragraph indented,
 % uncomment the next line to include the indentfirst package. -- rem
-% \usepackage{indentfirst}
 % Not sure if this is still an option -- Ruth
+% Not an issue any more, but I keep this line in case -- Shanhe
+% \usepackage{indentfirst}
+
 
 
 %%-- set penalties 

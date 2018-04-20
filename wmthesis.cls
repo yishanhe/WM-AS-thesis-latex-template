@@ -88,6 +88,10 @@
 \RequirePackage{amssymb}
 \RequirePackage{setspace}
 \RequirePackage{float}
+\RequirePackage{titletoc}
+\RequirePackage{import}
+% \RequirePackage{tocloft}
+% \renewcommand\cftchappresnum{Chapter~}
 
 %%--Must change the margin above the Chapter heading to 2 inches
 \RequirePackage{wmchapter} % defined in wmchapter.sty
@@ -399,7 +403,7 @@
 \newcommand{\makededicationpage}{
   \newpage
   \begin{center}
-    \addcontentsline{toc}{chapter}{Dedication}
+    \addcontentsline{toc}{chapter}{Dedications}
     \vspace*{3in}
     {\large \thesis@dedication}
   \end{center}
