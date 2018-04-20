@@ -46,12 +46,13 @@
 
 
 
-\documentclass[11pt,proposal]{wmthesis}
+\documentclass[11pt,draft]{wmthesis}
 
 % Options
 % -------
 % proposal - if you are writing a proposal, e.g., \documentclass[11pt, proposal]{wmthesis}
 
+\usepackage{tocloft}
 
 % *** PACKAGES YOU WANT TO INCLUDE ***
 \usepackage{import} % for subimport each proj NOTE: may need better solution to import latex folder for each chapter
@@ -89,34 +90,42 @@
 % ************************************
 
 
-% *** FONT ARIAL for thesis  ***
-% might not be required for proposal.
-%% see https://tex.stackexchange.com/questions/23957/how-to-set-font-to-arial-throughout-the-entire-document
-%% and http://www.tug.org/fonts/getnonfreefonts/
+\usepackage{ifxetex,ifluatex}
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
 
-%%-- This is how to set Arial font using XeLaTeX or LuaLaTeX. -- Shanhe
-%% See David's note at the beginning of this file how to install Arial font on department machine.
-% \usepackage{fontspec} % only use it with XeLaTeX or LuaLaTeX
-% \setmainfont{Arial}
-
-
-% %%-- This is how to set Arial font using LaTeX -- Shanhe
-% %% If you don't install the font into tex packages, then you will just get Computer Modern font.
-% %% How to install uarial package in Mac OS (required MacTeX, /Library/TeX/texbin in your path). *nix with TexLive should be similar. - Shanhe
-% %%   1. curl --remote-name https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
-% %%   2. sudo texlua install-getnonfreefonts
-% %%   3. sudo getnonfreefonts --sys -a
+% \renewcommand{\rmdefault}{phv} % Arial
+% \renewcommand{\sfdefault}{phv} % Arial
 \usepackage[T1]{fontenc}
-\usepackage{uarial}
-\renewcommand{\familydefault}{\sfdefault}
 
-% %%-- This is how to use Computer Modern font.
-% \usepackage[T1]{fontenc}
+\ifxetexorluatex
+    \usepackage{fontspec} % only use it with XeLaTeX or LuaLaTeX, recommende. -- Shanhe
+    \setmainfont{Arial}
+\else
+    % %%-- This is how to set Arial font using LaTeX or PdfLaTeX, not recommended. -- Shanhe
+    % %% If you don't install the font into tex packages, then you will just get Computer Modern font.
+    % %% How to install uarial package in Mac OS (required MacTeX, /Library/TeX/texbin in your path). *nix with TexLive should be similar. - Shanhe
+    % %%   1. curl --remote-name https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+    % %%   2. sudo texlua install-getnonfreefonts
+    % %%   3. sudo getnonfreefonts --sys -a
+    \usepackage{uarial}
+    \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+
 
 
 %%-- remove bold for table of contents (TOC) as per physical standards
-%\renewcommand{\cftchapfont}{\rm } %no bold in toc
-%\renewcommand{\cftchappagefont}{\rm } %no bold in toc
+\renewcommand{\cftchapfont}{\normalfont } %no bold in toc
+\renewcommand{\cftchappagefont}{\normalfont } %no bold in toc
 
 
 % The wmthesis class is based on the latex report class which

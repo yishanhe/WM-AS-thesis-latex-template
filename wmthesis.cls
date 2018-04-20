@@ -42,8 +42,8 @@
                         \@setflag \@draft = \@false%
                         \@setflag \@final = \@false}
 
-\DeclareOption{draft}{\@setflag \@proposal = \@true%
-                        \@setflag \@draft = \@false%
+\DeclareOption{draft}{\@setflag \@proposal = \@false%
+                        \@setflag \@draft = \@true%
                         \@setflag \@final = \@false}
 
 \DeclareOption{final}{\@setflag \@proposal = \@true%
@@ -384,7 +384,7 @@
 \newcommand{\makeacknowledgepage}{
   \newpage
   \begin{center}
-    \addcontentsline{toc}{chapter}{\rm Acknowledgments}
+    \addcontentsline{toc}{chapter}{Acknowledgments}
     \Large\acknowledgeName
   \end{center}
   \begin{singlespace}
@@ -399,7 +399,7 @@
 \newcommand{\makededicationpage}{
   \newpage
   \begin{center}
-    \addcontentsline{toc}{chapter}{\rm Dedication}
+    \addcontentsline{toc}{chapter}{Dedication}
     \vspace*{3in}
     {\large \thesis@dedication}
   \end{center}
@@ -411,7 +411,7 @@
 \newcommand{\maketablespage}{%
   \newpage
   %\begin{singlespace}
-  \addcontentsline{toc}{chapter}{\rm List of Tables}
+  \addcontentsline{toc}{chapter}{List of Tables}
   {\large	\listoftables	}
   %\end{singlespace}
 }
@@ -421,7 +421,7 @@
 \newcommand{\makefigurespage}{%
   \newpage
   %\begin{singlespace}
-  \addcontentsline{toc}{chapter}{\rm List of Figures}
+  \addcontentsline{toc}{chapter}{List of Figures}
   {\large	\listoffigures	}
   %\end{singlespace}
 }
@@ -549,13 +549,13 @@
 %%--------------------------------------------
 
 %%--Commands to simplify font changing.
-\newcommand{\sfup}{\sffamily\mdseries\upshape}
-\newcommand{\sfsc}{\ttfamily\mdseries\scshape}
-\newcommand{\sfit}{\sffamily\mdseries\itshape}
-\newcommand{\rmup}{\rmfamily\mdseries\upshape}
-\newcommand{\rmbf}{\rmfamily\bfseries\upshape}
-\newcommand{\rmit}{\rmfamily\mdseries\itshape}
-\newcommand{\ttup}{\ttfamily\mdseries\upshape}
+% \newcommand{\sfup}{\sffamily\mdseries\upshape}
+% \newcommand{\sfsc}{\ttfamily\mdseries\scshape}
+% \newcommand{\sfit}{\sffamily\mdseries\itshape}
+% \newcommand{\rmup}{\rmfamily\mdseries\upshape}
+% \newcommand{\rmbf}{\rmfamily\bfseries\upshape}
+% \newcommand{\rmit}{\rmfamily\mdseries\itshape}
+% \newcommand{\ttup}{\ttfamily\mdseries\upshape}
 
 
 \endinput
