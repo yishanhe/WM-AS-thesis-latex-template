@@ -9,11 +9,47 @@
 \def \@false {FL} % boolean - false
 \def \@setflag #1=#2{\edef #1{#2}} % \flag = boolean
 
+\def \@notp #1{\if #1\@false \else \@true \fi}
+
+\def \@andp #1#2{\if #1%
+                  \if #2\@true \else \@false \fi
+                \else
+                  \@false
+                \fi}
+
+\def \@orp #1#2{\if #1%
+                 \@true
+               \else
+                 \if #2\@true \else \@false \fi
+               \fi}
+
+\def \@xorp #1#2{\if #1%
+                  \if #2\@false \else \@true \fi
+                \else
+                  \if #2\@true \else \@false \fi
+                \fi}
+
 %%---------------------------------------------------
 %%-- Options, fully customize the template -- Shanhe
 %%---------------------------------------------------
 \@setflag \@thesis = \@true
-\DeclareOption{proposal}{\@setflag \@thesis = \@false}
+% \@setfalg \@dissertation = \@true
+\@setflag \@proposal = \@true
+\@setflag \@draft = \@true
+\@setflag \@final = \@true
+
+\DeclareOption{proposal}{\@setflag \@proposal = \@true%
+                        \@setflag \@draft = \@false%
+                        \@setflag \@final = \@false}
+
+\DeclareOption{draft}{\@setflag \@proposal = \@true%
+                        \@setflag \@draft = \@false%
+                        \@setflag \@final = \@false}
+
+\DeclareOption{final}{\@setflag \@proposal = \@true%
+                        \@setflag \@draft = \@false%
+                        \@setflag \@final = \@false}
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
 \LoadClass{report}
@@ -54,7 +90,7 @@
 \RequirePackage{float}
 
 %%--Must change the margin above the Chapter heading to 2 inches
-\RequirePackage{wmchapter} 
+\RequirePackage{wmchapter} % defined in wmchapter.sty
 
 
 
@@ -143,18 +179,16 @@
 
     \maketitlepage % required
 
-    \if \@thesis
+    \if \@orp \@draft \@final
       \makecopyrightpage
-      
+      \makeapprovalpage
     \fi
 
-    \makeapprovalpage
-
-	  \makeabstractpage
+	  \makeabstractpage % required
 
     \maketocpage % required
 
-    \if \@thesis
+    \if \@orp \@draft \@final
       \makeacknowledgepage
       \makededicationpage
     \fi
@@ -213,7 +247,7 @@
               \hspace{.1in}  \\
               \hspace{.1in}  \\
               \hspace{.1in}  \\ % 4 lines between prior degrees and purpose statement -- Ruth
-          {A \if \@thesis Dissertation \else Proposal \fi presented to the Graduate Faculty\\
+          {A \if \@thesis Dissertation \else Thesis \fi presented to the Graduate Faculty\\
               of the College of William and Mary in Candidacy for the Degree of\\
               Doctor of Philosophy}\\
               \hspace{.1in}  \\
@@ -229,7 +263,7 @@
               \hspace{.1in}  \\
               \hspace{.1in}  \\
               \hspace{.1in}  \\ % 5 lines between department and college -- Ruth
-          {The College of William and Mary\\
+          {College of William \& Mary\\
             \thesis@month, \thesis@year}
           }
       \end{center}
