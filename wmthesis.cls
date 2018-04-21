@@ -41,15 +41,12 @@
 \DeclareOption{proposal}{\@setflag \@proposal = \@true%
                         \@setflag \@draft = \@false%
                         \@setflag \@final = \@false}
-
 \DeclareOption{draft}{\@setflag \@proposal = \@false%
                         \@setflag \@draft = \@true%
                         \@setflag \@final = \@false}
-
-\DeclareOption{final}{\@setflag \@proposal = \@true%
+\DeclareOption{final}{\@setflag \@proposal = \@false%
                         \@setflag \@draft = \@false%
-                        \@setflag \@final = \@false}
-
+                        \@setflag \@final = \@true}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
 \LoadClass{report}
@@ -90,7 +87,7 @@
 \RequirePackage{float}
 \RequirePackage{titletoc}
 \RequirePackage{import}
-% \RequirePackage{tocloft}
+\RequirePackage{pdfpages}
 % \renewcommand\cftchappresnum{Chapter~}
 
 %%--Must change the margin above the Chapter heading to 2 inches
@@ -185,7 +182,11 @@
 
     \if \@orp \@draft \@final
       \makecopyrightpage
-      \makeapprovalpage
+      \if \@final
+        \IfFileExists{./signed_approval_page.pdf}{\includepdf{./signed_approval_page.pdf}}{\makeapprovalpage}
+      \else
+        \makeapprovalpage
+      \fi
     \fi
 
 	  \makeabstractpage % required

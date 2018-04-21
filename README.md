@@ -94,13 +94,13 @@ To use Computer Modern, just add
 \usepackage[T1]{fontenc}
 ```
 
-### Ways of install Arial font (Since Computer Modem is accepted, this font option is not favored.)
+### Ways of install Arial font
 
-Depends on you are using pdflatex, or latex, or xelatex, and the platforms,  there are different ways
-to install arial fonts, we list a few here and expect pull request to this repo for latest methods to
+If you insist on usingf Arial font, depends on you are using pdflatex, or latex, or xelatex, and the platforms, 
+there are different ways to install arial fonts, we list a few here and expect pull request to this repo for latest methods to
 get the Arial font.
 
-#### MacOS or Ubuntu - Using PdfLaTeX or LaTeX
+#### 1. MacOS or Ubuntu - Using PdfLaTeX or LaTeX
 
 This method shows font as `A030` (tested in edit mode of PDFExpert), but it is Arial indeed. 
 Might make this method less favored. Someone using this method needs to get consent from the office lady.
@@ -149,7 +149,7 @@ is uncommented
 
 then `make latex` or `make pdflatex`to compile the latex.
 
-#### MacOS or Windows - Using XeLaTeX or LuaLaTeX
+#### 2. MacOS or Windows - Using XeLaTeX or LuaLaTeX
 
 This method shows font as `Arial` (tested in edit mode of PDFExpert).
 
@@ -177,7 +177,7 @@ is uncommented
 
 then `make xelatex` to compile the latex.
 
-#### Aria in Ubuntu using XeLaTeX - from David
+#### 3. Aria in Ubuntu using XeLaTeX - from David
 
 > Modifications to comply with Physical Standards set on 08/13/2015 done by David T. Nguyen
 >            PhD, February 2016 
