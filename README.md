@@ -45,16 +45,17 @@ http://www.wm.edu/as/graduate/studentresources/thesis-dissertations/physicalstan
 The files used to produce the thesis.pdf file are
 
       ./thesis.tex                the top-level LaTeX file
+      ./structure.tex             the structure of the thesis
       ./Makefile                  can be used to compile to a PDF, either 
                                   with or without also compiling the bibtex, 
                                   as well as cleaning out unnecessary files 
                                   and creating a zipped backup
       ./acknowledge.tex           the acknowledgements
       ./abstract.tex              the abstract of the thesis
-      ./chapterIntroduction.tex   the introduction chapter of the thesis
-      ./chapter_Topic{1-3}.tex    the 1st-3rd chapters of the thesis
-      ./chapterConclusion.tex     the conclusion chapter of the thesis
-      ./vita.tex                  the student's vita (optional, 2017)
+      ./introduction.tex          the introduction chapter of the thesis
+      ./conclusion.tex            the conclusion chapter of the thesis
+      ./proj1-3 subfolders        the 1st-3rd chapters of the thesis
+      ./vita.tex                  the student's vita (optional, 2018)
       ./thesis.bib                the file that BiBTeX uses to create thesis.bbl
                                    (see Lamport's LaTeX book)
       ./wmthesis.cls              defines the wmthesis class
@@ -63,6 +64,8 @@ The files used to produce the thesis.pdf file are
       ./wmbib.bst                 the BiBTeX style file used to create the
                                   bibiliography 
                                    (see Lamport's LaTeX book)
+      ./signed_approval_page.pdf  the dummy signed approval page, replace it with your scan copy
+      ./uarial.sty                the style file for arial font
 
 To compile the LaTeX files and the bibliography, type "make" on the command
 line. To compile just the LaTeX files, type "make simple". You can comment the 
