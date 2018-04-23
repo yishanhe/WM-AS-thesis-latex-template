@@ -32,12 +32,14 @@
 %%---------------------------------------------------
 %%-- Options, fully customize the template -- Shanhe
 %%---------------------------------------------------
-\@setflag \@thesis = \@true
+\@setflag \@thesis = \@false
 % \@setfalg \@dissertation = \@true
 \@setflag \@proposal = \@true
 \@setflag \@draft = \@true
 \@setflag \@final = \@true
 
+\DeclareOption{thesis}{\@setflag \@thesis = \@true} 
+\DeclareOption{dissertation}{\@setflag \@thesis = \@false}                        
 \DeclareOption{proposal}{\@setflag \@proposal = \@true%
                         \@setflag \@draft = \@false%
                         \@setflag \@final = \@false}
@@ -298,7 +300,7 @@
               \hspace{.1in}  \\
               \hspace{.1in}  \\
               \hspace{.1in}  \\ % 4 lines between prior degrees and purpose statement -- Ruth
-          {A \if \@thesis Dissertation \else Thesis \fi presented to the Graduate Faculty\\
+          {A \if \@thesis Thesis \else Dissertation \fi presented to the Graduate Faculty\\
               of the College of William \& Mary in Candidacy for the Degree of\\
               \ifdefined\ThesisType \ThesisType \else Doctor of Philosophy \fi}\\
               \hspace{.1in}  \\
@@ -347,7 +349,7 @@
           {\large \hspace{.1in} } \\
           {\large \hspace{.1in} } \\
           {\large \hspace{.1in} } \\ % 3 lines between title and statement -- Ruth
-        {\large This \if \@thesis Dissertation \else Proposal \fi is submitted in partial fulfillment of \\
+        {\large This \if \@thesis Thesis \else Dissertation \fi is submitted in partial fulfillment of \\
             the requirements for the degree of}\\
             \hspace{.1in}  \\ % 1 lines between statements
         {\large \ifdefined\ThesisType \ThesisType \else Doctor of Philosophy \fi}\\

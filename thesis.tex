@@ -50,8 +50,11 @@
 
 % Options
 % -------
-% proposal - if you are writing a proposal, e.g., \documentclass[11pt, proposal]{wmthesis}
-
+% proposal - if you are writing a proposal, e.g., \documentclass[11pt, proposal]{wmthesis}, no approval page, acknowledge, dedication pages.
+% draft - if you are writing a draft, including everything (blank approval page) as ready to be signed
+% final - if you are writing a final, will replace approval page with signed_approval_page.pdf
+% thesis - if you are a master student, add thesis option, e.g.,  \documentclass[11pt, draft, thesis]{wmthesis}
+% dissertation - default
 
 % Refine the toc styple to the latest standard - Shanhe
 % \usepackage[titles]{tocloft}
@@ -166,7 +169,7 @@
 \thesisAdvisor{Professor Qun Li} % Advisor name with title
 
 % Enter Degree, e.g. Master of Science or Master of Arts or Doctor of Philosophy.
-\thesisType{Master of Arts}
+\thesisType{Doctor of Philosophy}
 
 
 % "Provide your hometown and state in the following format [e.g. St. Louis, Missouri]. 
@@ -213,7 +216,7 @@
 
 
 %%-- contents of the actual thesis feel free to \input as many files as you want
-\input{body.tex}
+\input{structure.tex}
 
 
 %%-- If you want to add some appendices uncomment \appendix below
