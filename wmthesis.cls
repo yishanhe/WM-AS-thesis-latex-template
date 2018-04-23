@@ -300,7 +300,7 @@
               \hspace{.1in}  \\ % 4 lines between prior degrees and purpose statement -- Ruth
           {A \if \@thesis Dissertation \else Thesis \fi presented to the Graduate Faculty\\
               of the College of William \& Mary in Candidacy for the Degree of\\
-              Doctor of Philosophy}\\
+              \ifdefined\ThesisType \ThesisType \else Doctor of Philosophy \fi}\\
               \hspace{.1in}  \\
               \hspace{.1in}  \\
               \hspace{.1in}  \\
@@ -350,7 +350,7 @@
         {\large This \if \@thesis Dissertation \else Proposal \fi is submitted in partial fulfillment of \\
             the requirements for the degree of}\\
             \hspace{.1in}  \\ % 1 lines between statements
-        {\large Doctor of Philosophy}\\
+        {\large \ifdefined\ThesisType \ThesisType \else Doctor of Philosophy \fi}\\
             \hspace{.1in}  \\
             \hspace{.1in}  \\
             \hspace{.1in}  \\ % 3 lines between statement and signature line -- Ruth
