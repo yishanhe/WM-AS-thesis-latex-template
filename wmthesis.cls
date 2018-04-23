@@ -92,8 +92,38 @@
 
 %%--Must change the margin above the Chapter heading to 2 inches
 \RequirePackage{wmchapter} % defined in wmchapter.sty
+\RequirePackage[T1]{fontenc}
+
+% utility code to get the compiler type
+\RequirePackage{ifxetex}
+\RequirePackage{ifluatex}
+
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
 
 
+
+
+%%----------------------------------------------------------------
+% Set toc 
+%%----------------------------------------------------------------
+\RequirePackage[titles]{tocloft}
+\newlength\mylength
+\renewcommand\cftchappresnum{\chaptername~}
+\renewcommand\cftchapaftersnum{.}
+\renewcommand{\cftdot}{}
+\settowidth\mylength{\cftchappresnum\cftchapaftersnum\quad}
+\addtolength\cftchapnumwidth{\mylength}
+\renewcommand{\cftchapfont}{\normalfont } %no bold in toc
+\renewcommand{\cftchappagefont}{\normalfont } %no bold in toc
 
 %%--Set the pagestyle to headings.
 \pagestyle{headings} % NOTE: need to check
@@ -108,14 +138,6 @@
 %%--------------------------------------------
 %%-- Meta data.
 %%--------------------------------------------
-% TODO: unify naming conventions.
-
-% 
-% \def\thesis@abstract{\empty}
-% \def\thesis@ack{\empty}
-% \def\thesis@vita{\empty}
-% \def\thesis@bib{\empty}
-% \def\thesis@dedication{\empty}
 
 \newcommand{\thesisTitle}[1]{\gdef\thesis@title{#1}}
 \newcommand{\thesisYear}[1]{\gdef\thesis@year{#1}}
@@ -126,6 +148,10 @@
 \newcommand{\thesisVita}[1]{\gdef\thesis@vita{#1}}
 \newcommand{\thesisBib}[1]{\gdef\thesis@bib{#1}}
 \newcommand{\thesisAdvisor}[1]{\gdef\thesis@advisor{#1}}
+
+\newcommand{\thesisType}[1]{\gdef\ThesisType{#1}}
+
+
 
 \newcommand{\thesisLocation}[1]{\gdef\thesis@location{#1}} 
 \newcommand{\thesisHometown}[1]{\gdef\ThesisHometown{#1}}
@@ -163,6 +189,26 @@
    \expandafter\def\csname thesis@member\thesis@ctr\endcsname{#2}
    \expandafter\def\csname thesis@dept\thesis@ctr\endcsname{#1}
    \addtocounter{thesis@members}{1}}
+
+
+%%----------------------------------------------------------------
+% Set the title that will be printed on the Contents page -- Ruth
+%%----------------------------------------------------------------
+% The negative vspace is used to make sure that only one line is
+% between the title and the first line for each of these pages.
+\renewcommand{\contentsname}{\begin{center}\Large\normalfont TABLE OF CONTENTS\vspace{-.75in}\end{center}}
+\renewcommand\listfigurename{\begin{center}\Large\normalfont LIST OF FIGURES\vspace{-.6in}\end{center}}
+\renewcommand\listtablename{\begin{center}\Large\normalfont LIST OF TABLES\vspace{-.6in}\end{center}}
+
+
+%%----------------------------------------------------------------
+% Set penalties 
+%%----------------------------------------------------------------
+% Penalties are the main value that TeX tries to minimise when line or page breaking, 
+% They may be inserted explicitly (\penalty125 means that the penalty for breaking at that point is 125). 
+% Some penalties are built in to the TeX system and inserted automatically.  Here we custom define a few.
+\def\defaultpenalty{1000} \clubpenalty=\defaultpenalty
+\widowpenalty=\defaultpenalty
 
 %%--------------------------------------------
 %%-- Prolog pages construction.
@@ -253,7 +299,7 @@
               \hspace{.1in}  \\
               \hspace{.1in}  \\ % 4 lines between prior degrees and purpose statement -- Ruth
           {A \if \@thesis Dissertation \else Thesis \fi presented to the Graduate Faculty\\
-              of the College of William and Mary in Candidacy for the Degree of\\
+              of the College of William \& Mary in Candidacy for the Degree of\\
               Doctor of Philosophy}\\
               \hspace{.1in}  \\
               \hspace{.1in}  \\
@@ -297,7 +343,7 @@
   \pagestyle{empty}
   \begin{singlespace}
     \begin{center}
-        \if \@thesis {\Large APPROVAL PAGE} \else {\Large Oral Exam Committee} \fi\\
+        {\Large APPROVAL PAGE}\\
           {\large \hspace{.1in} } \\
           {\large \hspace{.1in} } \\
           {\large \hspace{.1in} } \\ % 3 lines between title and statement -- Ruth

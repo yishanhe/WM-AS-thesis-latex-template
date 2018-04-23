@@ -40,29 +40,32 @@
 % line (xelatex) and to be easier to use / understand.
 %
 
-% At the time (Feb. 2018), please refer 
+% At the time (May 2018), please refer 
 % http://www.wm.edu/as/graduate/studentresources/thesis-dissertations/physicalstandards/index.php
 % for the latest standard.
 
 
 
-\documentclass[11pt,final]{wmthesis}
+\documentclass[11pt,draft]{wmthesis}
 
 % Options
 % -------
 % proposal - if you are writing a proposal, e.g., \documentclass[11pt, proposal]{wmthesis}
 
 
-\usepackage[titles]{tocloft}
-\newlength\mylength
-\renewcommand\cftchappresnum{\chaptername~}
-\renewcommand\cftchapaftersnum{.}
-\renewcommand{\cftdot}{}
-\settowidth\mylength{\cftchappresnum\cftchapaftersnum\quad}
-\addtolength\cftchapnumwidth{\mylength}
+% Refine the toc styple to the latest standard - Shanhe
+% \usepackage[titles]{tocloft}
+% \newlength\mylength
+% \renewcommand\cftchappresnum{\chaptername~}
+% \renewcommand\cftchapaftersnum{.}
+% \renewcommand{\cftdot}{}
+% \settowidth\mylength{\cftchappresnum\cftchapaftersnum\quad}
+% \addtolength\cftchapnumwidth{\mylength}
 
 
-% *** PACKAGES YOU WANT TO INCLUDE ***
+%%----------------------------------------------------------------
+% Set packages 
+%%----------------------------------------------------------------
 \usepackage{lipsum} % for dummy text
 
 % Some very useful LaTeX packages include:
@@ -94,23 +97,11 @@
 % \usepackage{listings}
 % \usepackage{titletoc}
 
-% ************************************
 
 
-\usepackage{ifxetex,ifluatex}
-\newif\ifxetexorluatex
-\ifxetex
-  \xetexorluatextrue
-\else
-  \ifluatex
-    \xetexorluatextrue
-  \else
-    \xetexorluatexfalse
-  \fi
-\fi
-
-\usepackage[T1]{fontenc}
-
+%%----------------------------------------------------------------
+% Set font 
+%%----------------------------------------------------------------
 \ifxetexorluatex
     \usepackage{fontspec} % only use it with XeLaTeX or LuaLaTeX, recommended. -- Shanhe
     \setmainfont{Arial}
@@ -127,11 +118,9 @@
 \fi
 
 
-%%-- remove bold for table of contents (TOC) as per physical standards
-\renewcommand{\cftchapfont}{\normalfont } %no bold in toc
-\renewcommand{\cftchappagefont}{\normalfont } %no bold in toc
-
-
+%%----------------------------------------------------------------
+% Set indent 
+%%----------------------------------------------------------------
 % The wmthesis class is based on the latex report class which
 % only indents paragraphs if they immediately follow other paragraphs.  The
 % dissertation lady says this is wrong.  I tend to give more credence
@@ -144,49 +133,55 @@
 
 
 
-%%-- set penalties 
-%% Penalties are the main value that TeX tries to minimise when line or page breaking, They may be inserted explicitly (\penalty125 means that the penalty for breaking at that point is 125). Some penalties are built in to the TeX system and inserted automatically.  Here we custom define a few.
-\def\defaultpenalty{1000} \clubpenalty=\defaultpenalty
-\widowpenalty=\defaultpenalty
-
-
-%%----------------------------------------------------------------
-% Set the title that will be printed on the Contents page -- Ruth
-%%----------------------------------------------------------------
-% The negative vspace is used to make sure that only one line is
-% between the title and the first line for each of these pages.
-\renewcommand{\contentsname}{\begin{center}\Large\normalfont TABLE OF CONTENTS\vspace{-.75in}\end{center}}
-\renewcommand\listfigurename{\begin{center}\Large\normalfont LIST OF FIGURES\vspace{-.6in}\end{center}}
-\renewcommand\listtablename{\begin{center}\Large\normalfont LIST OF TABLES\vspace{-.6in}\end{center}}
 
 
 \begin{document}
 \doublespacing
 
 %%--Set thesis metadata
-%%--*IMPORTANT* Title cannot be in ALL CAPS -- Ruth
+
+
+% Provide the full title of your thesis or dissertation using the format for upper and lower case as indicated.
 \thesisTitle{Dissertation Title}
+
+%  \thesisAuthor macro
+%     defines two TeX variables (only usable in this file)
+%  \thesis@author  is assumed to be a "short" version of the author's name
+%        used on the title page
+%  \thesis@authorx is assumed to be the full name of the author
+%        used on the approval, the UMI abstract, and the vita pages
+%  For example
+%     \thesisAuthor{A. Goode Student}
+%        sets both \thesis@author and \ thesis@authorx to
+%        "A. Goode Student"
+%     \thesisAuthor[Aloysius Goode Student]{A. Goode Student}
+%        sets \thesis@author  to "A. Goode Student" and
+%             \thesis@authorx to "Aloysius Goode Student"
 \thesisAuthor[Student Name]{Student Name}
+
+% Enter the expected conferment month and year of your degree, [e.g. January, May, August]. 
+% Check with the Office of Graduate Studies and Research to verify the actual graduation month and year.
 \thesisMonth{May}
 \thesisYear{2018}
 \thesisAdvisor{Professor Qun Li} % Advisor name with title
 
 
-%%-- Degrees earned previous to Ph.D.
-%% note that the degree should be spelled out, not abbreviated
+\thesisType{Doctor of Philosophy}
 
 
 % "Provide your hometown and state in the following format [e.g. St. Louis, Missouri]. 
 % International students should enter their hometown, state/province, and country [e.g. Montreal, Quebec, Canada]"
 % \thesisLocation{Xiangyang, Hubei, China} % @deprecated  this location should be hometown, using thesisHometown{} instead
-\thesisHometown{Xiangyang, Hubei, China}
+\thesisHometown{town/city, state}
 
+%%-- Degrees earned previous to Ph.D.
+%% note that the degree should be spelled out, not abbreviated
 % "List all previous degrees with the most recent degree first,
 % [e.g. Master of Arts,University of Colorado-Boulder, 1987]."
-\thesisDegreeOne{Master of Science, Huazhong University of Science and Technology, 2013}
-\thesisDegreeTwo{Bachelor of Engineer, Huazhong University of Science and Technology, 2010}
+\thesisDegreeOne{Master of Science, ABC College, 2013}
+\thesisDegreeTwo{Bachelor of Engineer, ABC College, 2010}
 
-
+% Enter your department name, [e.g. Department of History, Department of Biology, or American Studies Program].
 \thesisDepartment{Department of Computer Science}
 
 %%-- Committee members
@@ -205,8 +200,10 @@
 %%forget to check these files for formatting hints.
 %% Also, the order they are given right here does not matter
 \thesisAbstract{abstract.tex}
+
 % In the actual finished pdf document the TOC comes next
 \thesisAcknowledge{acknowledge.tex}
+
 \thesisDedication{I would like to dedicate this dissertation to my parents, Jane and John Doe who provided endless support and love throughout my time at William and Mary.}
 
 
