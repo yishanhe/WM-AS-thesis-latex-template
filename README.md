@@ -94,13 +94,15 @@ Adding `proposal`, `draft`, or `final` based on your pace.
 
 ```tex
 \documentclass[11pt, final]{wmthesis}
-% includes all required pages. It will also replace the blank approval pages with a signed pdf - rename your scann copy as 'signed_approval_page.pdf'.
+% includes all required pages. 
+% It will also replace the blank approval pages with a signed pdf 
+% - rename your scann copy as 'signed_approval_page.pdf'.
 ```
 
 
-Feel free to contact the contributors or open an issue if any you have any questions regarding the use of 
-these files. And you are very welcomed for **PULL REQUEST**. Let's combine efforts - long 
-live this template !
+Feel free to contact the contributors or open an issue if any you have any questions regarding the use of these files. 
+And you are very welcomed for **PULL REQUEST**. 
+Let's combine efforts - long live this template !
       
 
 
@@ -130,7 +132,7 @@ On Mac OS, you can install MacTex to get the Tex environment.
 
 Add fonts using the following commands:
 
-```bash
+```shell
 curl --remote-name https://www.tug.org/fonts/getnonfreefonts/install-getnonfreefonts
 sudo texlua install-getnonfreefonts
 sudo getnonfreefonts --sys -a
@@ -147,7 +149,7 @@ In you `thesis.tex`, put
 
 Then, in your `Makefile`, make sure
 
-```
+```makefile
 latex:
 	latex thesis
 	bibtex thesis
@@ -159,7 +161,7 @@ latex:
 
 or
 
-```
+```makefile
 pdflatex:
 	pdflatex thesis
 	bibtex thesis
@@ -179,7 +181,7 @@ You can using xelatex or lualatex to do this.
 
 in you `thesis.tex`, put
 
-```
+```tex
 \usepackage{fontspec}
 \setmainfont{Arial}
 ```
@@ -187,7 +189,7 @@ in you `thesis.tex`, put
 
 then, in your `Makefile`, make sure 
 
-```
+```makefile
 xelatex:
 	xelatex thesis
 	bibtex thesis
@@ -209,14 +211,14 @@ then `make xelatex` to compile the latex.
 Compiling in Ubuntu: use Kile as an editor, and use XeLaTeX button to compile
 Need to instal MS fonts first as follows
 
-```
+```shell
 sudo apt-get install ttf-mscorefonts-installer
 sudo fc-cache
 ```
 
 After that, check with 
 
-```bash
+```shell
 fc-match Arial
 ```
 
