@@ -7,36 +7,36 @@ http://www.wm.edu/as/graduate/studentresources/thesis-dissertations/physicalstan
 ## Contributors
 
 - [William L. Bynum](http://www.cs.wm.edu/~bynum/)
-- Rance Necaise
+- [Rance Necaise](http://necaiseweb.org/)
 
 > The department is indebted to Rance Necaise, who contributed the files from 
 > which these files were derived.  Rance received his PhD from the department 
 > in August of 1998. -- William L. Bynum
 
 
-- Bob Matthews
+- [Bob Matthews](http://matthews.sites.truman.edu/)
 
 > Updated 9/04 to conform to Arts and Science Graduate Writer's Guide of Nov. 
 > 2003.  Your milege may vary. --  Bob Matthews == rem
 
-- Ruth Lamprecht
-- Andrew Pyles
+- [Ruth Lamprecht](https://www.linkedin.com/in/ruthlamprecht/)
+- [Andrew Pyles](https://www.linkedin.com/in/andrew-j-pyles-b44909/)
 
 > Updated 07/13 to conform to Arts and Science standards of Oct. 2012, with 
 > help from Andrew Pyles -- Ruth
 
-- David T. Nguyen
+- [David T. Nguyen](http://davidnguyen.cz/)
 
 > Modifications to comply with Physical Standards set on 08/13/2015 
 
-- Ed Novak
+- [Ed Novak](https://www.fandm.edu/ed-novak)
 
 > Updated 06/16 to conform to the new William and Mary physical standards and 
 > submission system online with ProQuest. -- Ed Novak
 
 - Shanhe Yi
 
-> Committed with the physical standards set on 2017 (on-going). Refactored the 
+> Committed with the physical standards set on May 2018. Refactored the 
 > wmthesis class to make it easier to understand and modify. 
 > Maintain the first Github repository. -- Shanhe Yi
 
