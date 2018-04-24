@@ -68,16 +68,36 @@ The files used to produce the thesis.pdf file are
       ./uarial.sty                the style file for arial font
 
 To compile the LaTeX files and the bibliography, type "make" on the command
-line. To compile just the LaTeX files, type "make simple". You can comment the 
-corresponding sections in the makefile based on your using latex or xelatex.
+line. 
+To compile just the LaTeX files, type `make latex` , `make pdflatex` or `make xelatex`.
 
-<!-- The other files in the directory include a "figs" folder to hold some sample
-figures used for illustration, a "ThesisStandards" folder with the files
-available from the above website, and some other LaTeX style files necessary
-for optioning the correct formatting. -->
+If you are writing a thesis other than a dissertation, adding `thesis` to the document class option
 
-Feel free to contact the contributors if any you have any questions regarding the use of 
-these files. And you are very welcomed for PULL REQUEST. Let's combine efforts - long 
+```tex
+\documentclass[11pt, draft, thesis]{wmthesis}
+```
+
+Adding `proposal`, `draft`, or `final` based on your pace. 
+
+
+```tex
+\documentclass[11pt, proposal]{wmthesis}
+```
+not include approval, acknowledge, dedicate pages.
+
+```tex
+\documentclass[11pt, draft]{wmthesis}
+```
+include all required pages (a blank approval pages).
+
+```tex
+\documentclass[11pt, final]{wmthesis}
+```
+include all required pages. It will also replace the blank approval pages with a signed pdf - rename your scann copy as `signed_approval_page.pdf`.
+
+
+Feel free to contact the contributors or open an issue if any you have any questions regarding the use of 
+these files. And you are very welcomed for **PULL REQUEST**. Let's combine efforts - long 
 live this template !
       
 
@@ -86,16 +106,12 @@ live this template !
 ## Font problem
 
 According to the latest feedback from Office of Graduate Studies, Arts and Sciences, accepted
-font is either Arial or Computer Modern.
+font is either **Arial** or **Computer Modern**.
 
-Given that Arial is a commericial font, not available to all platforms (link Linux), we recommand
-to use Computer Modern.
+Given that Arial is a commericial font, not available to all platforms (e.g., Linux), we recommand
+to use Computer Modern (which is defined as default in `wmthesis.cls`).
 
-To use Computer Modern, just add
-
-```latex
-\usepackage[T1]{fontenc}
-```
+However, you can follow the instrcutures below to setup Arial if you like to use Arial font for you thesis/dissertation.
 
 ### Ways of install Arial font
 
