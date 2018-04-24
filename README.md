@@ -82,18 +82,20 @@ Adding `proposal`, `draft`, or `final` based on your pace.
 
 ```tex
 \documentclass[11pt, proposal]{wmthesis}
+% with no approval, acknowledge, dedicate pages.
 ```
-not include approval, acknowledge, dedicate pages.
+
 
 ```tex
-\documentclass[11pt, draft]{wmthesis}
+\documentclass[11pt, draft]{wmthesis} 
+% has all required pages and a blank approval page.
 ```
-include all required pages (a blank approval pages).
+
 
 ```tex
 \documentclass[11pt, final]{wmthesis}
+% includes all required pages. It will also replace the blank approval pages with a signed pdf - rename your scann copy as 'signed_approval_page.pdf'.
 ```
-include all required pages. It will also replace the blank approval pages with a signed pdf - rename your scann copy as `signed_approval_page.pdf`.
 
 
 Feel free to contact the contributors or open an issue if any you have any questions regarding the use of 
