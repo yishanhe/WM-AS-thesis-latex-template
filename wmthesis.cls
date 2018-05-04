@@ -390,6 +390,7 @@
             \hspace{.1in}  \\
             \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
         \if \@thesis
+        \else
           \underline{\hspace*{\thesisapprovalwidth}}\\
           {\small\thesis@memberv, \thesis@deptv\\
           \thesis@orgv} 
