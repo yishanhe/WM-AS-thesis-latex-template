@@ -1,3 +1,5 @@
+# TeX Template of Physical Standards for Theses & Dissertations for College of William & Mary, Arts & Sciences
+
 This directory contains a collection of template files that can be used with 
 LaTeX to produce a PhD dissertation that conforms pretty closely to the W&M 
 "Physical Standards for Theses & Dissertations".
