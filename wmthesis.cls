@@ -82,7 +82,7 @@
 %%---------------------------------------------------
 %%-- Required pacakges
 %%---------------------------------------------------
-
+\PassOptionsToPackage{final}{graphicx} % make sure draft not affecting graphicx
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{setspace}
