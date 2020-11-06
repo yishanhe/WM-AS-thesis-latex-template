@@ -370,12 +370,16 @@
             \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
         \underline{\hspace*{\thesisapprovalwidth}}\\
         {\small\thesis@memberiii, \thesis@deptiii\\
+        %-----------------
+        % uncomment / copy following section to add additional members to committee
+        %-----------------
         % \thesis@orgiii}
         %     \hspace{.1in}  \\
         %     \hspace{.1in}  \\
         %     \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
         % \underline{\hspace*{\thesisapprovalwidth}}\\
         % {\small\thesis@memberiv, \thesis@deptiv\\
+        %-----------------
         \thesis@orgiv}
             \hspace{.1in}  \\
             \hspace{.1in}  \\
