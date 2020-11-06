@@ -38,8 +38,8 @@
 \@setflag \@draft = \@true
 \@setflag \@final = \@true
 
-\DeclareOption{thesis}{\@setflag \@thesis = \@true} 
-\DeclareOption{dissertation}{\@setflag \@thesis = \@false}                        
+\DeclareOption{thesis}{\@setflag \@thesis = \@true}
+\DeclareOption{dissertation}{\@setflag \@thesis = \@false}
 \DeclareOption{proposal}{\@setflag \@proposal = \@true%
                         \@setflag \@draft = \@false%
                         \@setflag \@final = \@false}
@@ -115,7 +115,7 @@
 
 
 %%----------------------------------------------------------------
-% Set toc 
+% Set toc
 %%----------------------------------------------------------------
 \RequirePackage[titles]{tocloft}
 \newlength\mylength
@@ -155,7 +155,7 @@
 
 
 
-\newcommand{\thesisLocation}[1]{\gdef\thesis@location{#1}} 
+\newcommand{\thesisLocation}[1]{\gdef\thesis@location{#1}}
 \newcommand{\thesisHometown}[1]{\gdef\ThesisHometown{#1}}
 
 \newcommand{\thesisDegreeOne}[1]{\gdef\ThesisDegreeOne{#1}}
@@ -193,21 +193,12 @@
    \addtocounter{thesis@members}{1}}
 
 
-%%----------------------------------------------------------------
-% Set the title that will be printed on the Contents page -- Ruth
-%%----------------------------------------------------------------
-% The negative vspace is used to make sure that only one line is
-% between the title and the first line for each of these pages.
-\renewcommand{\contentsname}{\begin{center}\Large\normalfont TABLE OF CONTENTS\vspace{-.75in}\end{center}}
-\renewcommand\listfigurename{\begin{center}\Large\normalfont LIST OF FIGURES\vspace{-.6in}\end{center}}
-\renewcommand\listtablename{\begin{center}\Large\normalfont LIST OF TABLES\vspace{-.6in}\end{center}}
-
 
 %%----------------------------------------------------------------
-% Set penalties 
+% Set penalties
 %%----------------------------------------------------------------
-% Penalties are the main value that TeX tries to minimise when line or page breaking, 
-% They may be inserted explicitly (\penalty125 means that the penalty for breaking at that point is 125). 
+% Penalties are the main value that TeX tries to minimise when line or page breaking,
+% They may be inserted explicitly (\penalty125 means that the penalty for breaking at that point is 125).
 % Some penalties are built in to the TeX system and inserted automatically.  Here we custom define a few.
 \def\defaultpenalty{1000} \clubpenalty=\defaultpenalty
 \widowpenalty=\defaultpenalty
@@ -292,7 +283,7 @@
               \hspace{.1in}  \\
               \hspace{.1in}  \\
               \hspace{.1in}  \\ % 4 lines between hometown and prior degrees -- Ruth
-          \ifdefined\ThesisDegreeOne \ThesisDegreeOne \\ \fi 
+          \ifdefined\ThesisDegreeOne \ThesisDegreeOne \\ \fi
           \ifdefined\ThesisDegreeTwo \ThesisDegreeTwo \\ \fi
           \ifdefined\ThesisDegreeThree \ThesisDegreeThree \\ \fi
           % Support at most 3 previous degrees if there are more degrees, you have to manually add them. -- Shanhe
@@ -300,8 +291,8 @@
               \hspace{.1in}  \\
               \hspace{.1in}  \\
               \hspace{.1in}  \\ % 4 lines between prior degrees and purpose statement -- Ruth
-          {A \if \@thesis Thesis \else Dissertation \fi presented to the Graduate Faculty\\
-              of the College of William \& Mary in Candidacy for the Degree of\\
+          {A \if \@thesis Thesis \else Dissertation \fi presented to the Graduate Faculty
+              of \\ The College of William \& Mary in Candidacy for the Degree of\\
               \ifdefined\ThesisType \ThesisType \else Doctor of Philosophy \fi}\\
               \hspace{.1in}  \\
               \hspace{.1in}  \\
@@ -379,12 +370,12 @@
             \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
         \underline{\hspace*{\thesisapprovalwidth}}\\
         {\small\thesis@memberiii, \thesis@deptiii\\
-        \thesis@orgiii}
-            \hspace{.1in}  \\
-            \hspace{.1in}  \\
-            \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
-        \underline{\hspace*{\thesisapprovalwidth}}\\
-        {\small\thesis@memberiv, \thesis@deptiv\\
+        % \thesis@orgiii}
+        %     \hspace{.1in}  \\
+        %     \hspace{.1in}  \\
+        %     \hspace{.1in}  \\ % 3 lines between signatures -- Ruth
+        % \underline{\hspace*{\thesisapprovalwidth}}\\
+        % {\small\thesis@memberiv, \thesis@deptiv\\
         \thesis@orgiv}
             \hspace{.1in}  \\
             \hspace{.1in}  \\
@@ -393,7 +384,7 @@
         \else
           \underline{\hspace*{\thesisapprovalwidth}}\\
           {\small\thesis@memberv, \thesis@deptv\\
-          \thesis@orgv} 
+          \thesis@orgv}
         \fi
     \end{center}
   \end{singlespace}
@@ -402,7 +393,7 @@
 
 %%--------------------------------------------
 %%--The abstract page
-%%--Title 14 and content 12, single space between 
+%%--Title 14 and content 12, single space between
 % title and content.  -- Shanhe
 %%-- @see https://en.wikibooks.org/wiki/LaTeX/Fonts
 %%-- 11pt documentclass:
@@ -421,6 +412,7 @@
 }
 
 %%--------------------------------------------
+
 %%--The toc page
 \newcommand{\maketocpage}{
   \newpage
@@ -429,8 +421,14 @@
   \renewcommand{\thepage}{\roman{page}}
   \begingroup%
   \renewcommand{\bfseries}{\relax}% %prevent TOC from being bold
+  %%----------------------------------------------------------------
+  % Set the title that will be printed on the Contents page -- Ruth
+  %%----------------------------------------------------------------
+  % The negative vspace is used to make sure that only one line is
+  % between the title and the first line for each of these pages.
+  \renewcommand{\contentsname}{\begin{center}\Large\normalfont TABLE OF CONTENTS\vspace{-.75in}\end{center}}
   {\large \tableofcontents }
-  \endgroup%    
+  \endgroup%
 }
 
 %%--------------------------------------------
@@ -441,11 +439,11 @@
     \addcontentsline{toc}{chapter}{Acknowledgments}
     \Large\acknowledgeName
   \end{center}
-  \begin{singlespace}
   \begin{flushleft}
-    \input{\thesis@ack}
+    \begin{singlespace}
+        \input{\thesis@ack}
+    \end{singlespace}
   \end{flushleft}
-  \end{singlespace}
 }
 
 %%--------------------------------------------
@@ -455,7 +453,9 @@
   \begin{center}
     \addcontentsline{toc}{chapter}{Dedications}
     \vspace*{3in}
-    {\large \thesis@dedication}
+    \begin{singlespace}
+        {\large \thesis@dedication}
+    \end{singlespace}
   \end{center}
 }
 
@@ -466,6 +466,8 @@
   \newpage
   %\begin{singlespace}
   \addcontentsline{toc}{chapter}{List of Tables}
+  \renewcommand\listtablename{\begin{center}\Large\normalfont LIST OF TABLES\vspace{-.6in}\end{center}}
+
   {\large	\listoftables	}
   %\end{singlespace}
 }
@@ -476,6 +478,7 @@
   \newpage
   %\begin{singlespace}
   \addcontentsline{toc}{chapter}{List of Figures}
+  \renewcommand\listfigurename{\begin{center}\Large\normalfont LIST OF FIGURES\vspace{-.6in}\end{center}}
   {\large	\listoffigures	}
   %\end{singlespace}
 }
