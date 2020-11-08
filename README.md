@@ -1,7 +1,7 @@
 # TeX Template of Physical Standards for Theses & Dissertations for College of William & Mary, Arts & Sciences
 
-This directory contains a collection of template files that can be used with 
-LaTeX to produce a PhD dissertation that conforms pretty closely to the W&M 
+This directory contains a collection of template files that can be used with
+LaTeX to produce a PhD dissertation that conforms pretty closely to the W&M
 "Physical Standards for Theses & Dissertations".
 
 http://www.wm.edu/as/graduate/studentresources/thesis-dissertations/physicalstandards/index.php
@@ -11,36 +11,41 @@ http://www.wm.edu/as/graduate/studentresources/thesis-dissertations/physicalstan
 - [William L. Bynum](http://www.cs.wm.edu/~bynum/)
 - [Rance Necaise](http://necaiseweb.org/)
 
-> The department is indebted to Rance Necaise, who contributed the files from 
-> which these files were derived.  Rance received his PhD from the department 
+> The department is indebted to Rance Necaise, who contributed the files from
+> which these files were derived.  Rance received his PhD from the department
 > in August of 1998. -- William L. Bynum
 
 
 - [Bob Matthews](http://matthews.sites.truman.edu/)
 
-> Updated 9/04 to conform to Arts and Science Graduate Writer's Guide of Nov. 
+> Updated 9/04 to conform to Arts and Science Graduate Writer's Guide of Nov.
 > 2003.  Your milege may vary. --  Bob Matthews == rem
 
 - [Ruth Lamprecht](https://www.linkedin.com/in/ruthlamprecht/)
 - [Andrew Pyles](https://www.linkedin.com/in/andrew-j-pyles-b44909/)
 
-> Updated 07/13 to conform to Arts and Science standards of Oct. 2012, with 
+> Updated 07/13 to conform to Arts and Science standards of Oct. 2012, with
 > help from Andrew Pyles -- Ruth
 
 - [David T. Nguyen](http://davidnguyen.cz/)
 
-> Modifications to comply with Physical Standards set on 08/13/2015 
+> Modifications to comply with Physical Standards set on 08/13/2015
 
 - [Ed Novak](https://www.fandm.edu/ed-novak)
 
-> Updated 06/16 to conform to the new William and Mary physical standards and 
+> Updated 06/16 to conform to the new William and Mary physical standards and
 > submission system online with ProQuest. -- Ed Novak
 
 - Shanhe Yi
 
-> Committed with the physical standards set on May 2018. Refactored the 
-> wmthesis class to make it easier to understand and modify. 
+> Committed with the physical standards set on May 2018. Refactored the
+> wmthesis class to make it easier to understand and modify.
 > Maintain the first Github repository. -- Shanhe Yi
+
+- [Seth Goodman](https://github.com/sgoodm)
+
+> Updated 11/20 to compile in Overleaf and meet current standards
+
 
 ## Usage
 
@@ -48,9 +53,9 @@ The files used to produce the thesis.pdf file are
 
       ./thesis.tex                the top-level LaTeX file
       ./structure.tex             the structure of the thesis
-      ./Makefile                  can be used to compile to a PDF, either 
-                                  with or without also compiling the bibtex, 
-                                  as well as cleaning out unnecessary files 
+      ./Makefile                  can be used to compile to a PDF, either
+                                  with or without also compiling the bibtex,
+                                  as well as cleaning out unnecessary files
                                   and creating a zipped backup
       ./acknowledge.tex           the acknowledgements
       ./abstract.tex              the abstract of the thesis
@@ -61,16 +66,16 @@ The files used to produce the thesis.pdf file are
       ./thesis.bib                the file that BiBTeX uses to create thesis.bbl
                                    (see Lamport's LaTeX book)
       ./wmthesis.cls              defines the wmthesis class
-      ./wmchapter.sty             used by ./stcy/wmthesis.cls to set the top 
+      ./wmchapter.sty             used by ./stcy/wmthesis.cls to set the top
                                   margin at the beginning of each chapter
       ./wmbib.bst                 the BiBTeX style file used to create the
-                                  bibiliography 
+                                  bibiliography
                                    (see Lamport's LaTeX book)
       ./signed_approval_page.pdf  the dummy signed approval page, replace it with your scan copy
       ./uarial.sty                the style file for arial font
 
 To compile the LaTeX files and the bibliography, type "make" on the command
-line. 
+line.
 To compile just the LaTeX files, type `make latex` , `make pdflatex` or `make xelatex`.
 
 If you are writing a thesis other than a dissertation, adding `thesis` to the document class option
@@ -79,7 +84,7 @@ If you are writing a thesis other than a dissertation, adding `thesis` to the do
 \documentclass[11pt, draft, thesis]{wmthesis}
 ```
 
-Adding `proposal`, `draft`, or `final` based on your pace. 
+Adding `proposal`, `draft`, or `final` based on your pace.
 
 
 ```tex
@@ -89,23 +94,23 @@ Adding `proposal`, `draft`, or `final` based on your pace.
 
 
 ```tex
-\documentclass[11pt, draft]{wmthesis} 
+\documentclass[11pt, draft]{wmthesis}
 % has all required pages and a blank approval page.
 ```
 
 
 ```tex
 \documentclass[11pt, final]{wmthesis}
-% includes all required pages. 
-% It will also replace the blank approval pages with a signed pdf 
+% includes all required pages.
+% It will also replace the blank approval pages with a signed pdf
 % - rename your scann copy as 'signed_approval_page.pdf'.
 ```
 
 
-Feel free to contact the contributors or open an issue if any you have any questions regarding the use of these files. 
-And you are very welcomed for **PULL REQUEST**. 
+Feel free to contact the contributors or open an issue if any you have any questions regarding the use of these files.
+And you are very welcomed for **PULL REQUEST**.
 Let's combine efforts - long live this template !
-      
+
 
 
 
@@ -121,13 +126,13 @@ However, you can follow the instrcutures below to setup Arial if you like to use
 
 ### Ways of install Arial font
 
-If you insist on usingf Arial font, depends on you are using pdflatex, or latex, or xelatex, and the platforms, 
+If you insist on usingf Arial font, depends on you are using pdflatex, or latex, or xelatex, and the platforms,
 there are different ways to install arial fonts, we list a few here and expect pull request to this repo for latest methods to
 get the Arial font.
 
 #### 1. MacOS or Ubuntu - Using PdfLaTeX or LaTeX
 
-This method shows font as `A030` (tested in edit mode of PDFExpert), but it is Arial indeed. 
+This method shows font as `A030` (tested in edit mode of PDFExpert), but it is Arial indeed.
 Might make this method less favored. Someone using this method needs to get consent from the office lady.
 
 On Mac OS, you can install MacTex to get the Tex environment.
@@ -189,7 +194,7 @@ in you `thesis.tex`, put
 ```
 
 
-then, in your `Makefile`, make sure 
+then, in your `Makefile`, make sure
 
 ```makefile
 xelatex:
@@ -205,9 +210,9 @@ then `make xelatex` to compile the latex.
 #### 3. Aria in Ubuntu using XeLaTeX - from David
 
 > Modifications to comply with Physical Standards set on 08/13/2015 done by David T. Nguyen
->            PhD, February 2016 
+>            PhD, February 2016
 >            Topic: Enhancing Mobile Device System Using Information from Users and Upper Layers
-> Use PDF figures (for some reason EPS figures are not displayed correctly, 
+> Use PDF figures (for some reason EPS figures are not displayed correctly,
 > you can use `epspdf myfigure.eps` to convert)
 
 Compiling in Ubuntu: use Kile as an editor, and use XeLaTeX button to compile
@@ -218,7 +223,7 @@ sudo apt-get install ttf-mscorefonts-installer
 sudo fc-cache
 ```
 
-After that, check with 
+After that, check with
 
 ```shell
 fc-match Arial
