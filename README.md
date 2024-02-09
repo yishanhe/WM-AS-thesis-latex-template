@@ -46,7 +46,7 @@ http://www.wm.edu/as/graduate/studentresources/thesis-dissertations/physicalstan
 
 > Updated 11/20 to compile in Overleaf and meet current standards
 
--[Ezekiel Wertz](https://github.com/zwertz)
+- [Ezekiel Wertz](https://github.com/zwertz)
 > Updated 2/24 to include branding change from "College of William \& Mary" > to "William \& Mary". >Minor changes based on recommendations from OGS on  physical standards.
 
 ## Usage
