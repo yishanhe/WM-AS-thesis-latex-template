@@ -292,7 +292,7 @@
               \hspace{.1in}  \\
               \hspace{.1in}  \\ % 4 lines between prior degrees and purpose statement -- Ruth
           {A \if \@thesis Thesis \else Dissertation \fi presented to the Graduate Faculty
-              of \\ The College of William \& Mary in Candidacy for the Degree of\\
+              of \\William \& Mary in Candidacy for the Degree of\\
               \ifdefined\ThesisType \ThesisType \else Doctor of Philosophy \fi}\\
               \hspace{.1in}  \\
               \hspace{.1in}  \\
@@ -307,7 +307,7 @@
               \hspace{.1in}  \\
               \hspace{.1in}  \\
               \hspace{.1in}  \\ % 5 lines between department and college -- Ruth
-          {College of William \& Mary\\
+          {William \& Mary\\
             \thesis@month, \thesis@year}
           }
       \end{center}
@@ -498,7 +498,7 @@
 
 %%--Set the bib style
 \def\thesisBibStyle{wmbib}
-
+\renewcommand{\bibname}{References} %%--added by Zeke to change name to References
 %%--Define a single command for making the bibliography.
 \newcommand{\makeThesisBib}[1]{
   \bibliographystyle{\thesisBibStyle}
@@ -509,7 +509,8 @@
 \let\wm@endthebibliography\endthebibliography
 
 \def\thebibliography#1{\begin{spacing}{1}\wm@thebibliography{#1}
-       \addcontentsline{toc}{chapter}{Bibliography}}
+       \addcontentsline{toc}{chapter}{Bibliography}
+       }
 \def\endthebibliography{\wm@endthebibliography\end{spacing}}
 
 %%--------------------------------------------

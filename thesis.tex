@@ -46,7 +46,7 @@
 
 
 
-\documentclass[11pt,draft]{wmthesis}
+\documentclass[11pt,draft,dissertation]{wmthesis}
 
 % Options
 % -------
@@ -88,8 +88,8 @@
 % Set font 
 %%----------------------------------------------------------------
 \ifxetexorluatex
-    \usepackage{fontspec} % only use it with XeLaTeX or LuaLaTeX, recommended. -- Shanhe
-    \setmainfont{Arial}
+   \usepackage{fontspec} % only use it with XeLaTeX or LuaLaTeX, recommended. -- Shanhe
+   \setmainfont{Arial}
 \else
     % %%-- This is how to set Arial font using LaTeX or PdfLaTeX, not recommended. -- Shanhe
     % %% If you don't install the font into tex packages, then you will just get Computer Modern font.
@@ -98,8 +98,8 @@
     % %%   2. sudo texlua install-getnonfreefonts
     % %%   3. sudo getnonfreefonts --sys -a
     % %% Then uncommen the following two lines.
-    % \usepackage{uarial}
-    % \renewcommand{\familydefault}{\sfdefault}
+    %\usepackage{uarial}
+    %\renewcommand{\familydefault}{\sfdefault}
 \fi
 
 
@@ -174,11 +174,11 @@
 %%  \thesisCommittee[Department]{Professor John Doe}{ABC College}
 %%  \thesisCommittee{John Doe}{XYZ Company}
 %%  \thesisCommittee[Copration Department]{John Doe}{XYZ Company}
-\thesisCommittee[Computer Science]{Professor A}{College of William \& Mary}  % use {College of William \& Mary} -- Shanhe
-\thesisCommittee[Computer Science]{Associate Professor B}{College of William \& Mary}
-\thesisCommittee[Computer Science]{Assitant Professor C}{College of William \& Mary}
-\thesisCommittee[Electrical and Computer Engineering]{Professor D}{College of William \& Mary}
-\thesisCommittee[Applied Science]{Outside Committee Member}{College of William \& Mary}
+\thesisCommittee[Computer Science]{Professor A}{William \& Mary}  % use {College of William \& Mary} -- Shanhe
+\thesisCommittee[Computer Science]{Associate Professor B}{William \& Mary}
+\thesisCommittee[Computer Science]{Assitant Professor C}{William \& Mary}
+\thesisCommittee[Electrical and Computer Engineering]{Professor D}{William \& Mary}
+\thesisCommittee[Applied Science]{Outside Committee Member}{William \& Mary}
 
 
 %%-- Insert contents of abstract.tex, acknowledge.tex and the dedication.  Don't
@@ -190,6 +190,7 @@
 \thesisAcknowledge{acknowledge.tex}
 
 \thesisDedication{I would like to dedicate this dissertation to my parents, Jane and John Doe who provided endless support and love throughout my time at William and Mary.}
+
 
 
 
@@ -213,6 +214,7 @@
 
 
 %%--Include the bibliography
+
 \makeThesisBib{thesis}
 
 
